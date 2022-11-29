@@ -3,7 +3,7 @@
 // Recitation: 303 - Xuafei Recitation 101 - Morgan Byers
 // Project 3 Merchant.cpp
 #include "Merchant.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include <iostream>
 #include <fstream>
 #include <string>
