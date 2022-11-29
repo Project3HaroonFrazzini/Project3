@@ -3,7 +3,7 @@
 // Recitation: 303 - Xuafei Recitation 101 - Morgan Byers
 // Project 3 Merchant.cpp
 #include "Merchant.h"
-#include "Invetory.h"
+#include "Inventory.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -19,7 +19,7 @@ void Merchant::buyIngredients()
 
 }
 void Merchant::buyCookware()
-[
+{
     int num = 0;
     cout << "Choose one of the following:\n1. (25%) Ceramic Pot [2 Gold]\n2. (10%) Frying Pan [10 Gold]\n3. ( 2%) Cauldron [20 Gold]\n4. Cancel";
     cin >> num;
@@ -45,7 +45,7 @@ void Merchant::buyCookware()
         }
     } while (num !=4);
     
-]
+}
 void Merchant ::buyWeapons()
 {
 
