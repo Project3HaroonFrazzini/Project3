@@ -5,7 +5,6 @@
 
 #include "Party.h"
 #include "Inventory.h"
-#include "Inventory.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
