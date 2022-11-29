@@ -6,7 +6,7 @@
 #define PARTY_H
 #include <vector>
 #include <iostream>
-#include "Inventory.h"
+#include "inventory.h"
 #include "Inventory.cpp"
 #include "Merchant.h"
 #include "Merchant.cpp"

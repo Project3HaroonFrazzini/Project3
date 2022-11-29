@@ -7,10 +7,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-// sadlsadl
 Inventory::Inventory(){
     gold = 100;
 
