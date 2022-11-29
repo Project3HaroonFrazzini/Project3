@@ -26,5 +26,6 @@ string Monster:: getName()
 // get a random line from the monsters.txt and get that name
 int Monster:: getRating()
 {
-
+    srand(time(0));
+    
 }
