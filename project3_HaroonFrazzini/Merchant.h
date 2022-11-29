@@ -12,10 +12,10 @@ class Merchant
     int priceMultiplier;
     public:
 
-    void buyIngredients();
-    void buyCookware();
-    void buyWeapons();
-    void buyArmor();
-    void sellTreasures(); 
+    void buyIngredients(Inventory);
+    void buyCookware(Inventory);
+    void buyWeapons(Inventory);
+    void buyArmor(Inventory);
+    void sellTreasures(Inventory); 
 };
 #endif
