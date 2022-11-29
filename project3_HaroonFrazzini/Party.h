@@ -15,14 +15,14 @@ class Party
 {
     private:
     vector <int> fullnessValues;
-    string <vector> names;
+    vector <string> names;
     int anger;
     Inventory inv;
     Merchant merch;
 
     public:
     int getFullness(int);
-    void setName(int, string)
+    void setName(int, string);
     string getName(int);
     void StatusUpdate(Inventory);
     Party();

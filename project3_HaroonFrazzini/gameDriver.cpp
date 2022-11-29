@@ -19,5 +19,5 @@ int main(){
     //test.printInventory();
 
     Party par = Party();
-    par.statusUpdate();
+    par.StatusUpdate();
 }
