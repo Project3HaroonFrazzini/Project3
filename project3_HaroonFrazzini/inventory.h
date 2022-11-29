@@ -1,6 +1,6 @@
 // CSCI1300 Fall 2022
 // Author: Vince Frazzini & Ali Haroon
-// Recitation: 303 - Xuafei Recitation 101 - Morgan Byers
+// Recitation: 303 - Xuafei___Recitation 101 - Morgan Byers
 // Project 3 Inventory.h
 
 #ifndef INVENTORY_H
@@ -27,7 +27,7 @@ class Inventory{
     int rapier;
     int battle_axe;
     int longsword;
-
+    vector<int> weapons[5];
     vector<int> treasure[5];
     public:
     
@@ -45,7 +45,7 @@ class Inventory{
     void setArmor(int armors);
 
     vector<int> getWeapons();
-    void setWeapons(int clubs, int spears, int rapiers, int axes, int swords);
+    void setWeapons(int weaponAmt, int weaponIndex);
 
 };
 
