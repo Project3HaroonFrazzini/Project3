@@ -5,6 +5,8 @@
 
 #include "Inventory.h"
 #include "Inventory.cpp"
+#include "Party.h"
+#include "Party.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -15,4 +17,7 @@ int main(){
     Inventory test = Inventory();
 
     test.printInventory();
+
+    Party par = Party();
+    par.statusUpdate();
 }
