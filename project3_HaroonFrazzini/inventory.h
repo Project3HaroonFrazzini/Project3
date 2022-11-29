@@ -27,8 +27,8 @@ class Inventory{
     int rapier;
     int battle_axe;
     int longsword;
-    vector<int> weapons[5];
-    vector<int> treasure[5];
+    vector<int> weapons;
+    vector<int> treasure;
     public:
     
     Inventory();

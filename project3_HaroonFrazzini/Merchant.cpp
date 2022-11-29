@@ -48,7 +48,44 @@ void Merchant::buyCookware()
 }
 void Merchant ::buyWeapons()
 {
-
+    int num = 0;
+    int amount = 0;
+    do{
+    cout << "Ah yes weapons! Very important. Here are all the options I have for sale.\nAnd for some extra gold you can get some special weapons that do extra damage, shown by (+X)" <<endl;
+    cout << "Choose one of the following:\n1. Stone Club [2 Gold]\n2. Iron Spear [2 Gold]\n3. (+1) Mythril Rapier [5 Gold]\n4. (+2) Flaming Battle-Axe Rapier [15 Gold]\n5. (+4) Vorpal Long Sword [50 Gold]\n6. Cancel" <<endl;
+    cin >> num; 
+        if(num == 1)
+        {
+        cout << "How many would you like? (Enter a positive integer, or 0 to cancel)" << endl;
+        cin >> amount;
+        
+        }
+        else if(num == 2)
+        {
+        cout << "How many would you like? (Enter a positive integer, or 0 to cancel)" << endl;
+        cin >> amount;
+        }
+        else if(num == 3)
+        {
+        cout << "How many would you like? (Enter a positive integer, or 0 to cancel)" << endl;
+        cin >> amount;
+        }
+        else if(num == 4)
+        {
+        cout << "How many would you like? (Enter a positive integer, or 0 to cancel)" << endl;
+        cin >> amount;
+        }
+        else if(num == 6)
+        {
+            
+        }
+        else
+        {
+            cout << "Invalid input." << endl;
+            cout << "Enter a new number" << endl;
+            cin >> num;
+        }
+    } while (num !=6);
 }
 void Merchant::buyArmor()
 {

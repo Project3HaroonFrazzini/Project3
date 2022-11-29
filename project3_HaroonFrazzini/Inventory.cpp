@@ -26,17 +26,18 @@ Inventory::Inventory(){
     rapier = 0;
     battle_axe = 0;
     longsword = 0;
-    //vector<int> treasure[5];
+    vector<int> weapons {0,0,0,0,0};
+    vector<int> treasure {0,0,0,0,0};
 }
 
 void Inventory::printInventory(){
     string menu = "|-------------|\n|  INVENTORY  |\n|-------------|";
     string gold_print = "|  Gold       | " + to_string(gold);
     string cookware =   "|  Cookware   | P: " + to_string(ceramic_pot) + " |  F: " + to_string(frying_pan) + " |  C: " + to_string(couldron) + " |";
-    string weapons =    "|  Weapons    | C: " + to_string(club) + " |  S: " + to_string(spear) + " |  R: " + to_string(rapier) + " |";
+    string weapon =     "|  Weapons    | C: " + to_string(club) + " |  S: " + to_string(spear) + " |  R: " + to_string(rapier) + " |";
     string armor_print ="|  Armor      | " + to_string(armor);
     string treasures =  "|  Treasures  | R: " ; //to_string(treasure[0]) + "";
-    cout << menu << endl << gold_print << endl << cookware << endl << weapons << endl << armor_print << endl;
+    cout << menu << endl << gold_print << endl << cookware << endl << weapon << endl << armor_print << endl;
 }
 
 int Inventory::getIngredients()
@@ -67,4 +68,7 @@ void Inventory::setArmor(int armors){
 vector<int> Inventory::getWeapons()
 {
 
+}
+void Inventory::setWeapons(int weaponAmt, int weaponIndex){
+    weapons.at(weaponIndex) = weapons.at(weaponIndex) + weaponAmt;
 }
