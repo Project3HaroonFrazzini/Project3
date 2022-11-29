@@ -11,13 +11,14 @@
 #include <string>
 #include <stdlib.h> 
 #include <time.h>   
+#include <vector>
 
 using namespace std;
 
 Party::Party()
 {
-    vector <string> names = {};
-    vector <int> fullnessValues = {};
+    vector <string> names = {"","","","",""};
+    vector <int> fullnessValues = {0,0,0,0,0};
     anger = 0;
     Inventory inv = Inventory();
 }
@@ -35,7 +36,7 @@ void Party::setName(int index, string name)
 {
     names[index] = name;
 }
-string Party:: StatusUpdate()
+void Party:: StatusUpdate(Inventory)
 {
-    cout << "+-------------+\n| STATUS      |\n+-------------+";
+    cout << "+-------------+\n| STATUS      |\n+-------------+" << inv.printInventory();
 }

@@ -6,20 +6,25 @@
 #define PARTY_H
 #include <vector>
 #include <iostream>
+#include "Inventory.h"
+#include "Inventory.cpp"
+#include "Merchant.h"
+#include "Merchant.cpp"
 
 class Party
 {
     private:
-    vector <int> fullnessValues[5];
-    string <vector> names[5];
+    vector <int> fullnessValues;
+    string <vector> names;
     int anger;
     Inventory inv;
+    Merchant merch;
 
     public:
     int getFullness(int);
     void setName(int, string)
     string getName(int);
-    string StatusUpdate();
+    void StatusUpdate(Inventory);
     Party();
 
 };
