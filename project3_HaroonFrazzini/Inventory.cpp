@@ -3,7 +3,7 @@
 // Recitation: 303 - Xuafei Recitation 101 - Morgan Byers
 // Project 3 Inventory.cpp
 
-#include "Inventory.h"
+#include "inventory.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -26,9 +26,6 @@ Inventory::Inventory(){
     rapier = 0;
     battle_axe = 0;
     longsword = 0;
-
-
-
     //vector<int> treasure[5];
 }
 
@@ -62,7 +59,7 @@ void Inventory::setCookware(int pots, int pans, int could)
 
 int Inventory::getArmor()
 {
-    return Armor;
+    //return Armor;
 }
 void Inventory::setArmor(int armors){
 
