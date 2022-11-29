@@ -4,6 +4,8 @@
 // Project 3 Party.cpp
 
 #include "Party.h"
+#include "Inventory.h"
+#include "Inventory.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -16,16 +18,24 @@ Party::Party()
 {
     vector <string> names = {};
     vector <int> fullnessValues = {};
+    anger = 0;
+    Inventory inv = Inventory();
 }
-Party:: Party getFullness(int index)
+int Party::getFullness(int index)
 {
-    return fullnessValues[index];
+    int toReturn;
+    toReturn = fullnessValues[index];
+    return toReturn;
 }
-string Party:: getName(int index)
+string Party::getName(int index)
 {
     return names[index];
 }
-void Party:: setName(int index, string name)
+void Party::setName(int index, string name)
 {
     names[index] = name;
+}
+string Party:: StatusUpdate()
+{
+    cout << "+-------------+\n| STATUS      |\n+-------------+";
 }

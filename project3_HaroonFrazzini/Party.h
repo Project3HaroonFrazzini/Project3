@@ -12,11 +12,14 @@ class Party
     private:
     vector <int> fullnessValues[5];
     string <vector> names[5];
+    int anger;
+    Inventory inv;
 
     public:
     int getFullness(int);
     void setName(int, string)
     string getName(int);
+    string StatusUpdate();
     Party();
 
 };
