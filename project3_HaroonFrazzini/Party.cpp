@@ -4,7 +4,7 @@
 // Project 3 Party.cpp
 
 #include "Party.h"
-#include "inventory.h"
+#include "Inventory.h"
 #include "Inventory.cpp"
 #include <iostream>
 #include <fstream>

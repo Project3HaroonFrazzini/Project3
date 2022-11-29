@@ -5,7 +5,7 @@
 #ifndef MERCHANT_H
 #define MERCHANT_H
 #include <iostream>
-#include "inventory.h"
+#include "Inventory.h"
 
 class Merchant
 {
