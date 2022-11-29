@@ -19,6 +19,7 @@ class Inventory{
     int ceramic_pot;
     int frying_pan;
     int couldron;
+    vector<int> cookware;
 
     int armor;
 
@@ -35,11 +36,13 @@ class Inventory{
 
     void printInventory();
 
+    int getGold();
+
     int getIngredients();
     void setIngredients(int ingredients);
 
-    vector<int> getCookware();
-    void setCookware(int pots, int pans, int could);
+    int getCookware();
+    void setCookware(int cookAmt, int cookIndex);
 
     int getArmor();
     void setArmor(int armors);

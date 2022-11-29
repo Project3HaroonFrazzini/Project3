@@ -5,12 +5,15 @@
 #ifndef MERCHANT_H
 #define MERCHANT_H
 #include <iostream>
+#include "inventory.h"
 
 class Merchant
 {
     private:
     int priceMultiplier;
     public:
+
+    Merchant();
 
     void buyIngredients(Inventory);
     void buyCookware(Inventory);
