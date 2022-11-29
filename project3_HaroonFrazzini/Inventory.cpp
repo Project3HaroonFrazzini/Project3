@@ -27,6 +27,8 @@ Inventory::Inventory(){
     battle_axe = 0;
     longsword = 0;
 
+
+
     //vector<int> treasure[5];
 }
 
@@ -69,6 +71,6 @@ vector<int> Inventory::getWeapons()
 {
 
 }
-void Inventory::setWeapons(int clubs, int spears, int rapiers, int axes, int swords){
-
+void Inventory::setWeapons(int weaponAmt, int weaponIndex){
+    weapons[weaponIndex] += weaponAmt;
 }
