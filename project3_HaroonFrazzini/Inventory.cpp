@@ -28,7 +28,7 @@ Inventory::Inventory(){
     battle_axe = 0;
     longsword = 0;
     weapons = {0,0,0,0,0};
-    treasure = {0,0,0,0,0};
+    treasures = {0,0,0,0,0};
 }
 
 
@@ -38,8 +38,8 @@ void Inventory::printInventory(){
     string cookware_print =   "|  Cookware   | P: " + to_string(cookware[0]) + " |  F: " + to_string(cookware[1]) + " |  C: " + to_string(cookware[2]) + " |";
     string weapon       =     "|  Weapons    | C: " + to_string(weapons[0]) + " |  S: " + to_string(weapons[1]) + " |  R: " + to_string(weapons[2]) + " | B: " + to_string(weapons[3]) + " | L: " + to_string(weapons[4]) + " |";
     string armor_print    =   "|  Armor      | " + to_string(armor);
-    string treasures =        "|  Treasures  | R: " ; //to_string(treasure[0]) + "";
-    cout << menu << endl << gold_print << endl << cookware_print << endl << weapon << endl << armor_print << endl;
+    string treasure =        "|  Treasures  | R: " + to_string(treasures[0]) + " |  N: " + to_string(treasures[1]) + " |  B: " + to_string(treasures[2]) + " | C: " + to_string(treasures[3]) + " | G: " + to_string(treasures[4]) + " |";
+    cout << menu << endl << gold_print << endl << cookware_print << endl << weapon << endl << armor_print << treasure << endl;
 }
 
 int Inventory::getGold(){

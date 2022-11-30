@@ -140,7 +140,7 @@ Inventory Merchant ::buyWeapons(Inventory current)
     
     do{
     cout << "Ah yes weapons! Very important. Here are all the options I have for sale.\nAnd for some extra gold you can get some special weapons that do extra damage, shown by (+X)" <<endl;
-    cout << "Choose one of the following:\n1. Stone Club [2 Gold]\n2. Iron Spear [2 Gold]\n3. (+1) Mythril Rapier [5 Gold]\n4. (+2) Flaming Battle-Axe [15 Gold]\n5. (+4) Vorpal Long Sword [50 Gold]\n6. Cancel" <<endl;
+    cout << "Choose one of the following:\n1. Stone Club ["<< club <<" Gold]\n2. Iron Spear ["<<spear<<" Gold]\n3. (+1) Mythril Rapier ["<<rapier <<" Gold]\n4. (+2) Flaming Battle-Axe ["<<axe<<" Gold]\n5. (+4) Vorpal Long Sword ["<<sword<<" Gold]\n6. Cancel" <<endl;
     cin >> num; 
     if(num > 0 && num < 6){
         cout << "How many would you like? (Enter a positive integer, or 0 to cancel)" << endl;
