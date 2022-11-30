@@ -40,3 +40,31 @@ void Party:: StatusUpdate(Inventory inv)
     cout << "+-------------+\n| STATUS      |\n+-------------+\n";
     inv.printInventory();
 }
+void Party:: ActionMenu()
+{
+    int choice = 0;
+    cout << "Choose an option" << endl;
+    do()
+    {
+    switch (choice)
+    {
+    case 1;
+        ""
+        break;
+    case 2:
+        break;
+    case 3;
+        break;
+    case 4;
+        break;
+    default:
+        while(!(choice > 0))
+        {
+        cout << "Please enter a valid input" << endl;
+        }
+        break;
+    }
+    }
+    while(choice != 5);
+
+}

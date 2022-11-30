@@ -23,6 +23,7 @@ class Party
     void setName(int, string);
     string getName(int);
     void StatusUpdate(Inventory);
+    void ActionMenu();
     Party();
 
 };
