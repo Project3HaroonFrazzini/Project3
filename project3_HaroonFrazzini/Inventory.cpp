@@ -3,14 +3,14 @@
 // Recitation: 303 - Xuafei Recitation 101 - Morgan Byers
 // Project 3 Inventory.cpp
 
-#include "inventory.h"
+#include "Inventory.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-// sadlsadl
 Inventory::Inventory(){
     gold = 100;
 

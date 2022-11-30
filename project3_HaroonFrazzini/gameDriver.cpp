@@ -4,9 +4,7 @@
 // Project 3 GameDriver.cpp
 
 #include "Inventory.h"
-#include "Inventory.cpp"
 #include "Party.h"
-#include "Party.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -14,10 +12,10 @@
 using namespace std;
 
 int main(){
-    Inventory test = Inventory();
+    //Inventory test = Inventory();
 
-    test.printInventory();
+    //test.printInventory();
 
     Party par = Party();
-    par.statusUpdate();
+    par.StatusUpdate();
 }
