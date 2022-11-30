@@ -7,9 +7,7 @@
 #include <vector>
 #include <iostream>
 #include "Inventory.h"
-#include "Inventory.cpp"
 #include "Merchant.h"
-#include "Merchant.cpp"
 
 class Party
 {
