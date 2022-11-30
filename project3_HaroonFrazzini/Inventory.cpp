@@ -39,7 +39,7 @@ void Inventory::printInventory(){
     string weapon       =     "|  Weapons    | C: " + to_string(weapons[0]) + " |  S: " + to_string(weapons[1]) + " |  R: " + to_string(weapons[2]) + " | B: " + to_string(weapons[3]) + " | L: " + to_string(weapons[4]) + " |";
     string armor_print    =   "|  Armor      | " + to_string(armor);
     string treasure =        "|  Treasures  | R: " + to_string(treasures[0]) + " |  N: " + to_string(treasures[1]) + " |  B: " + to_string(treasures[2]) + " | C: " + to_string(treasures[3]) + " | G: " + to_string(treasures[4]) + " |";
-    cout << menu << endl << gold_print << endl << cookware_print << endl << weapon << endl << armor_print << treasure << endl;
+    cout << menu << endl << gold_print << endl << cookware_print << endl << weapon << endl << armor_print << endl << treasure << endl;
 }
 
 int Inventory::getGold(){
@@ -76,7 +76,7 @@ int Inventory::getArmor()
     return armor;
 }
 void Inventory::setArmor(int armors){
-
+    armor = armors;
 }
 vector<int> Inventory::getWeapons()
 {

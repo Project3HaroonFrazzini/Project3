@@ -266,9 +266,33 @@ Inventory Merchant ::buyWeapons(Inventory current)
     } while (num !=6);
     return current;
 }
-void Merchant::buyArmor(Inventory current)
+Inventory Merchant::buyArmor(Inventory current)
 {
+    int amount = 0;
+    string answer = "";
+    int armor = 5*priceMultiplier;
 
+    cout << "Armor is necessary for your party, each peice costs "<< armor << " gold.\nHow many suits of armor can I get you? (Enter a positive integer, or 0 to cancel)" <<endl;
+    cin >> amount; 
+    while(amount*armor > current.getGold()){
+        cout << "You do not have enough money to purchase " << amount << " " << "pieces of armor." << endl;
+        cout << "Each piece of armor is "<< armor <<" Gold and you have " << current.getGold() << " gold." << endl;
+        cout << "Choose between 1-" << current.getGold()/armor << " Pieces of armor or enter 0 to cancel."<<endl;
+        cin >> amount;
+        if(amount == 0){
+            break;
+        }
+    }
+    if(amount != 0){
+        cout << "Are you sure you want to buy " << amount << " pieces of armor for " << amount*armor << " Gold? (y/n)" <<endl;
+        cin >> answer;
+        if(answer == "y"){
+            current.setArmor(amount);
+            current.setGold(current.getGold()-amount*armor);
+            cout << "Pleasure doing business with you!" << endl << "You now have " << current.getGold() << " gold." <<endl;
+        }
+    }
+    return current;
 }
 void Merchant::sellTreasures(Inventory current)
 {

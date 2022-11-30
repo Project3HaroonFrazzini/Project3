@@ -19,7 +19,7 @@ class Merchant
     void buyIngredients(Inventory);
     Inventory buyCookware(Inventory);
     Inventory buyWeapons(Inventory);
-    void buyArmor(Inventory);
+    Inventory buyArmor(Inventory);
     void sellTreasures(Inventory); 
 };
 #endif

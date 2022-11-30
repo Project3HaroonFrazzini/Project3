@@ -29,7 +29,7 @@ class Inventory{
     int battle_axe;
     int longsword;
     vector<int> weapons;
-    vector<int> treasure;
+    vector<int> treasures;
     public:
     
     Inventory();
