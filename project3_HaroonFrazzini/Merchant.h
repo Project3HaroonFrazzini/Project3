@@ -14,10 +14,11 @@ class Merchant
     public:
 
     Merchant();
+    Merchant(int);
 
     void buyIngredients(Inventory);
     Inventory buyCookware(Inventory);
-    void buyWeapons(Inventory);
+    Inventory buyWeapons(Inventory);
     void buyArmor(Inventory);
     void sellTreasures(Inventory); 
 };

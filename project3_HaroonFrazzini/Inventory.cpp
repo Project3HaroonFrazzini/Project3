@@ -27,8 +27,8 @@ Inventory::Inventory(){
     rapier = 0;
     battle_axe = 0;
     longsword = 0;
-    vector<int> weapons {0,0,0,0,0};
-    vector<int> treasure {0,0,0,0,0};
+    weapons = {0,0,0,0,0};
+    treasure = {0,0,0,0,0};
 }
 
 
@@ -83,5 +83,5 @@ vector<int> Inventory::getWeapons()
     return weapons;
 }
 void Inventory::setWeapons(int weaponAmt, int weaponIndex){
-    weapons.at(weaponIndex) = weapons.at(weaponIndex) + weaponAmt;
+    weapons[weaponIndex] = weapons[weaponIndex] + weaponAmt;
 }
