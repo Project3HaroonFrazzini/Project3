@@ -35,7 +35,8 @@ void Party::setName(int index, string name)
 {
     names[index] = name;
 }
-void Party:: StatusUpdate()
+void Party:: StatusUpdate(Inventory inv)
 {
-    cout << "+-------------+\n| STATUS      |\n+-------------+";
+    cout << "+-------------+\n| STATUS      |\n+-------------+\n";
+    inv.printInventory();
 }

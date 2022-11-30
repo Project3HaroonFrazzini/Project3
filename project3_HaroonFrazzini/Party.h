@@ -22,7 +22,7 @@ class Party
     int getFullness(int);
     void setName(int, string);
     string getName(int);
-    void StatusUpdate();
+    void StatusUpdate(Inventory);
     Party();
 
 };
