@@ -37,11 +37,12 @@ class Inventory{
     void printInventory();
 
     int getGold();
+    void setGold(int);
 
     int getIngredients();
     void setIngredients(int ingredients);
 
-    int getCookware();
+    void getCookware();
     void setCookware(int cookAmt, int cookIndex);
 
     int getArmor();

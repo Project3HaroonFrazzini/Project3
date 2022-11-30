@@ -46,6 +46,10 @@ int Inventory::getGold(){
     return gold;
 }
 
+void Inventory::setGold(int new_gold){
+    gold = new_gold;
+}
+
 int Inventory::getIngredients()
 {
     return ingredients;
@@ -55,19 +59,16 @@ void Inventory::setIngredients(int ingredients)
 
 }
 
-int Inventory::getCookware()
+void Inventory::getCookware()
 {
-    for(int i : cookware){
-        cout << i <<endl;
-    }
-    return 0;
+    cout << "Ceramic Pots: " << cookware[0] <<endl;
+    cout << "Frying Pans: " << cookware[1] <<endl;
+    cout << "Couldrons: " << cookware[2] <<endl;
+    //return 0;
 }
 void Inventory::setCookware(int cookAmt, int cookIndex)
 {
-
-    cout << "Cook Index: " << cookIndex <<endl;
-    cout << to_string(cookware.at(0)) << endl;
-    //cookware.at(cookIndex) = cookware.at(cookIndex) + cookAmt;
+    cookware[cookIndex] += cookAmt;
 }
 
 int Inventory::getArmor()

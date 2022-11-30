@@ -16,7 +16,7 @@ class Merchant
     Merchant();
 
     void buyIngredients(Inventory);
-    void buyCookware(Inventory);
+    Inventory buyCookware(Inventory);
     void buyWeapons(Inventory);
     void buyArmor(Inventory);
     void sellTreasures(Inventory); 
