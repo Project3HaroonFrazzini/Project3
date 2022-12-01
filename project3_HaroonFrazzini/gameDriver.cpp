@@ -12,10 +12,10 @@
 using namespace std;
 
 int main(){
-    //Inventory test = Inventory();
+    Inventory test = Inventory();
 
     //test.printInventory();
 
     Party par = Party();
-    par.StatusUpdate();
+    par.StatusUpdate(test);
 }
