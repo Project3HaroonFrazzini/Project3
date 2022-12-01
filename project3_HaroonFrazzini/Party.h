@@ -36,6 +36,8 @@ class Party
     void MainMenu();
     int setFullness(int, int);
     Inventory Misfortunes();
+    void removeName(int);
+    void removeFullness(int);
 
 };
 #endif

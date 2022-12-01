@@ -54,6 +54,14 @@ int Party:: setFullness(int newFullness, int index)
     fullnessValues[index] = newFullness;
     return fullnessValues[index];
 }
+void Party:: removeName(int index)
+{
+    names.remove(index);
+}
+void Party:: removeFullness(int index)
+{
+    fullnessValues.remove(index);
+}
 Inventory Party:: Misfortunes()
 {
     srand(time(0));
@@ -129,15 +137,24 @@ Inventory Party:: Misfortunes()
                     if(getFullness(1) <= 0)
                     {
                         //dude is dead
-                        names.remove(i);
-                        fullnessValues.remove(i);
+                        removeName(i);
+                        removeFullness(i);
                     }
                 }
             }
         }
-        else
+        else if((map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true) && (key == 0))
         {
-
+            rand = rand()%4 + 1;
+            for(int i = 1; i <= 4; i++)
+            {
+                if(i == rand)
+                {
+                    cout << "Oh no, party member" << getName(i) << " died!!!!" << endl;
+                    removeName(i);
+                    removeFullness(i);
+                }
+            }
         }
     }
 
