@@ -12,7 +12,6 @@
 #include "Monster.h"
 #include <vector>
 
-
 class Party
 {
     private:
