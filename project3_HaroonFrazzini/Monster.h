@@ -27,6 +27,7 @@ class Monster
     Inventory battle(Inventory current);
     Inventory surrender(Inventory current);
     
-    
+    void removeMonster(string);
+    string getMonster();
 };
 #endif

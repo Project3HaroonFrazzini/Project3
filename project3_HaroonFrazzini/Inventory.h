@@ -14,22 +14,14 @@ class Inventory{
 
     private:
     int gold;
+    int keys;
 
     int ingredients;
-    int ceramic_pot;
-    int frying_pan;
-    int couldron;
     vector<int> cookware;
-
     int armor;
-
-    int club;
-    int spear;
-    int rapier;
-    int battle_axe;
-    int longsword;
     vector<int> weapons;
     vector<int> treasures;
+    
     public:
     
     Inventory();
@@ -39,10 +31,13 @@ class Inventory{
     int getGold();
     void setGold(int);
 
+    int getKeys();
+    void setKeys(int);
+
     int getIngredients();
     void setIngredients(int ingredients);
 
-    void getCookware();
+    int getCookware(int);
     void setCookware(int cookAmt, int cookIndex);
 
     int getArmor();

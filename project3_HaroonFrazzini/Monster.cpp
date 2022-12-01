@@ -39,6 +39,8 @@ int Monster:: getRating()
 
 Inventory Monster::battle(Inventory current){
     int num = 0;
+    string name = getMonster();
+    
     cout << "MINOTAUR AHEAD! THEY LOOK HOSTILE!!" <<endl;
     int totWeapons = current.getWeapons(0) + current.getWeapons(1) + current.getWeapons(2) + current.getWeapons(3) + current.getWeapons(5);
     if(totWeapons > 0){
@@ -49,7 +51,14 @@ Inventory Monster::battle(Inventory current){
             bool result = attack(current);
             if(result){
                 current.setGold(current.getGold() + 10*rating);
-                current.setIngredients(current.getGold() + 10*rating);
+                current.setIngredients(current.getIngredients() + 5*rating);
+                srand(time(0));
+                int random_num = rand()% 100+1;
+                if(random_num <=10){
+                    cout << "The monster dropped a key!" << endl;
+                    current.setKeys(current.getKeys() + 1);
+                }
+                removeMonster(name);
             }
             else{
 
@@ -96,4 +105,13 @@ bool Monster::attack(Inventory current){
 
 Inventory Monster::surrender(Inventory current){
     return current;
+}
+
+string Monster::getMonster(){
+    string name = "";
+    return name;
+}
+
+void Monster::removeMonster(string name){
+    return;
 }

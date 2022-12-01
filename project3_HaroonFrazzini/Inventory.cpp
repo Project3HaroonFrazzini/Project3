@@ -13,20 +13,11 @@ using namespace std;
 
 Inventory::Inventory(){
     gold = 100;
+    keys = 0;
 
     ingredients = 0;
-    ceramic_pot = 0;
-    frying_pan = 0;
-    couldron = 0;
     cookware = {0,0,0};
-
     armor = 0;
-
-    club = 0;
-    spear = 0;
-    rapier = 0;
-    battle_axe = 0;
-    longsword = 0;
     weapons = {0,0,0,0,0};
     treasures = {0,0,0,0,0};
 }
@@ -50,6 +41,14 @@ void Inventory::setGold(int new_gold){
     gold = new_gold;
 }
 
+int Inventory::getKeys(){
+    return keys;
+}
+
+void Inventory::setKeys(int new_keys){
+    keys = new_keys;
+}
+
 int Inventory::getIngredients()
 {
     return ingredients;
@@ -59,12 +58,9 @@ void Inventory::setIngredients(int ingred)
     ingredients = ingred;
 }
 
-void Inventory::getCookware()
+int Inventory::getCookware(int cookIndex)
 {
-    cout << "Ceramic Pots: " << cookware[0] <<endl;
-    cout << "Frying Pans: " << cookware[1] <<endl;
-    cout << "Couldrons: " << cookware[2] <<endl;
-    //return 0;
+    return cookware[cookIndex];
 }
 void Inventory::setCookware(int cookAmt, int cookIndex)
 {
