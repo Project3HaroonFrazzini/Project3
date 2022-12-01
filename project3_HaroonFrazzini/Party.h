@@ -34,6 +34,7 @@ class Party
     int getAnger();
     Party();
     void MainMenu();
+    int setFullness(int);
 
 };
 #endif

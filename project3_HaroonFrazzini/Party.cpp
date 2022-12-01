@@ -49,6 +49,17 @@ int Party:: getAnger()
 {
     return anger;
 }
+int Party:: setFullness(int amount)
+{
+    if(amount < 0)
+    {
+      fullness = fullness - amount;
+    }
+    else{
+        fullness = fullness + amount;
+    }
+    return fullness;
+}
 void Party:: StatusUpdate(Inventory inv)
 {
     cout << "+-------------+\n|      STATUS      |\n+-------------+\n";
@@ -78,6 +89,15 @@ void Party:: ActionMenu()
                 char direction;
                 cout << " Choose a direction to move" << endl;
                 cin >> direction;
+                map.move(direction);
+                for(int i = 0; i < 5; i++)
+                {
+                    int randFullnessChance = rand() % 100 + 1;
+                    if(randFullnessChance <= 20)
+                    {
+                        getFullness(i).setFullness(-1);
+                    }
+                }
                 break;
             case 2:
                 break;
