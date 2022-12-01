@@ -51,6 +51,8 @@ class Inventory{
     vector<int> getWeapons();
     void setWeapons(int weaponAmt, int weaponIndex);
 
+    void setTreasures(int treasureAmt, int treasureIndex);
+    int getTreasures(int treasureIndex);
 };
 
 #endif

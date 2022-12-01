@@ -16,10 +16,12 @@ class Merchant
     Merchant();
     Merchant(int);
 
-    void buyIngredients(Inventory);
+    Inventory menu(Inventory);
+
+    Inventory buyIngredients(Inventory);
     Inventory buyCookware(Inventory);
     Inventory buyWeapons(Inventory);
     Inventory buyArmor(Inventory);
-    void sellTreasures(Inventory); 
+    Inventory sellTreasures(Inventory); 
 };
 #endif

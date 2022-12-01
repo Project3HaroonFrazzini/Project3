@@ -54,9 +54,9 @@ int Inventory::getIngredients()
 {
     return ingredients;
 }
-void Inventory::setIngredients(int ingredients)
+void Inventory::setIngredients(int ingred)
 {
-
+    ingredients = ingred;
 }
 
 void Inventory::getCookware()
@@ -84,4 +84,12 @@ vector<int> Inventory::getWeapons()
 }
 void Inventory::setWeapons(int weaponAmt, int weaponIndex){
     weapons[weaponIndex] = weapons[weaponIndex] + weaponAmt;
+}
+
+void Inventory::setTreasures(int treasureAmt, int treasureIndex){
+    treasures[treasureIndex] = treasureAmt;
+}
+
+int Inventory::getTreasures(int treasureIndex){
+    return treasures[treasureIndex];
 }

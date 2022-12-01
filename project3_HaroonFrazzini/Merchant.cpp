@@ -14,12 +14,84 @@ Merchant:: Merchant()
 {
     priceMultiplier = 1;
 }
-Merchant:: Merchant(int mult){
-    priceMultiplier = mult;
+Merchant:: Merchant(int rooms){
+    priceMultiplier = 1 + (.25 * rooms);
 }
-void Merchant::buyIngredients(Inventory current)
-{
 
+Inventory Merchant::menu(Inventory current){
+    int num = 0;
+    cout << "If you're looking to get supplies, you've come to the right place.\nI would be happy to part with some of my wares...for the proper price!" <<endl;
+    do{
+    current.printInventory();
+    cout << "Choose one of the following:\n1. Ingredients: To make food, you have to cook raw ingredients.\n2. Cookware: You will need something to cook those ingredients.\n3. Weapons: It's dangerous to go alone, take this!\n4. Armor: If you want to survive monster attacks, you will need some armor.\n5. Sell treasures: If you find anything shiny, I would be happy to take it off your hands.\n6. Leave: Make sure you get everything you need, I'm leaving after this sale!\n" <<endl;
+    cin >> num;
+    if(num == 1){
+        current = buyIngredients(current);
+        //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
+    }
+    else if(num == 2){
+        current = buyCookware(current);
+        //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
+    }
+    else if(num == 3){
+        current = buyWeapons(current);
+        //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
+    }
+    else if(num == 4){
+        current = buyArmor(current);
+        //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
+    }
+    else if(num == 5){
+        current = sellTreasures(current);
+        //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
+    }
+    else if(num <=0 || num > 6){
+        cout << "Invalid input." << endl;
+        cout << "Enter a new number" << endl;
+        cin >> num;
+    }
+    
+    }while(num != 6);
+    return current;
+}
+
+Inventory Merchant::buyIngredients(Inventory current)
+{
+    int amount = 0;
+    string answer = "";
+    int ingred = 1*priceMultiplier;
+
+    cout << "I recommend at least 10 kg of ingredients per person! Ingredients are "<< ingred << " gold per kg.\nHow many kg of ingredients do you need? (Enter a positive mulitple of 5, or 0 to cancel)" <<endl;
+    cin >> amount; 
+    while(amount*ingred > current.getGold() || amount%5 != 0){
+        if(amount*ingred > current.getGold()){
+            cout << "You do not have enough money to purchase " << amount << " " << " kg of ingredients." << endl;
+            cout << "Each kg of ingredients is "<< ingred <<" Gold and you have " << current.getGold() << " gold." << endl;
+            cout << "Choose between 1-" << current.getGold()/ingred << " kg of ingredients or enter 0 to cancel."<<endl;
+            cin >> amount;
+            if(amount == 0){
+                break;
+            }
+        }
+        else if(amount%5 != 0){
+            cout << "You must buy ingredients in increments in 5 kg" <<endl;
+            cout << "How many kg of ingredients do you need? (Enter a positive mulitple of 5, or 0 to cancel)" <<endl;
+            cin >> amount;
+            if(amount == 0){
+                break;
+            }
+        }
+    }
+    if(amount != 0){
+        cout << "Are you sure you want to buy " << amount << " kg of ingredients for " << amount*ingred << " Gold? (y/n)" <<endl;
+        cin >> answer;
+        if(answer == "y"){
+            current.setIngredients(amount);
+            current.setGold(current.getGold()-amount*ingred);
+            cout << "Pleasure doing business with you!" << endl << "You now have " << current.getGold() << " gold." <<endl;
+        }
+    }
+    return current;
 }
 Inventory Merchant::buyCookware(Inventory current)
 {
@@ -272,7 +344,7 @@ Inventory Merchant::buyArmor(Inventory current)
     string answer = "";
     int armor = 5*priceMultiplier;
 
-    cout << "Armor is necessary for your party, each peice costs "<< armor << " gold.\nHow many suits of armor can I get you? (Enter a positive integer, or 0 to cancel)" <<endl;
+    cout << "Armor is necessary for your party, each piece costs "<< armor << " gold.\nHow many suits of armor can I get you? (Enter a positive integer, or 0 to cancel)" <<endl;
     cin >> amount; 
     while(amount*armor > current.getGold()){
         cout << "You do not have enough money to purchase " << amount << " " << "pieces of armor." << endl;
@@ -294,7 +366,102 @@ Inventory Merchant::buyArmor(Inventory current)
     }
     return current;
 }
-void Merchant::sellTreasures(Inventory current)
+Inventory Merchant::sellTreasures(Inventory current)
 {
+    int club = 2*priceMultiplier;
+    int spear = 2*priceMultiplier;
+    int rapier = 5*priceMultiplier;
+    int axe = 15*priceMultiplier;
+    int sword = 50*priceMultiplier;
 
+    int num = 0;
+    int amount = 0;
+    string answer = "";
+    
+    do{
+    cout << "Oh do you have something for me?\nI'll happily take some of those treasures off of you!" <<endl;
+    cout << "Choose one of the following to sell:\n1. Silver Ring [10 Gold each]\n2. Ruby Necklace [20 Gold Each]\n3. Emerald Bracelet [30 Gold Each]\n4. Diamond Circlet [40 Gold Each]\n5. Gem-Encrusted Goblet [50 Gold Each]\n6. Cancel" <<endl;
+    cin >> num; 
+    if(num > 0 && num < 6 ){
+        if(current.getTreasures(num-1) > 0){
+            cout << "How many would you like to sell? (Enter a positive integer, or 0 to cancel)" << endl;
+            cin >> amount;
+            while(amount > current.getTreasures(num-1) || amount < 0){
+                    if(amount > current.getTreasures(num-1)){
+                        cout << "It doesn't look like you have that many!" <<endl;
+                        cout << "Choose between 1-" << current.getTreasures(num-1) << " to sell or enter 0 to cancel." <<endl;
+                        cin >> amount;
+                        if(amount ==0 ){
+                            break;
+                        }
+                    }
+                    else{
+                        cout << "Invalid input." << endl;
+                        cout << "Enter a new number to buy:" << endl;
+                        cin >> amount;
+                    }
+            }
+        }
+        else{
+            cout << "Oops! It doesn't look like you have any of that treasure" <<endl;
+            //break;
+        }
+    }
+
+    if(amount != 0){
+        if(num == 1){
+            cout << "Are you sure you want to sell " << amount << " Silver Rings for " << amount*10 << " Gold? (y/n)" <<endl;
+            cin >> answer;
+            if(answer == "y"){
+                current.setTreasures(current.getTreasures(0) - amount,0);
+                current.setGold(current.getGold()+amount*10);
+                cout << "Pleasure doing business with you!" << endl << "You now have " << current.getGold() << " gold." <<endl;
+            }
+        }
+        else if(num == 2){
+            cout << "Are you sure you want to sell " << amount << " Ruby Necklaces for " << amount*20 << " Gold? (y/n)" <<endl;
+            cin >> answer;
+            if(answer == "y"){
+                current.setTreasures(current.getTreasures(1) - amount,1);
+                current.setGold(current.getGold()+amount*20);
+                cout << "Pleasure doing business with you!" << endl << "You now have " << current.getGold() << " gold." <<endl;
+            }
+        }
+        else if(num == 3){
+            cout << "Are you sure you want to sell " << amount << " Emerald Bracelets for " << amount*30 << " Gold? (y/n)" <<endl;
+            cin >> answer;
+            if(answer == "y"){
+                current.setTreasures(current.getTreasures(2) - amount,2);
+                current.setGold(current.getGold()+amount*30);
+                cout << "Pleasure doing business with you!" << endl << "You now have " << current.getGold() << " gold." <<endl;
+            }
+        }
+        else if(num == 4){
+            cout << "Are you sure you want to sell " << amount << " Diamond Circlets for " << amount*40 << " Gold? (y/n)" <<endl;
+            cin >> answer;
+            if(answer == "y"){
+                current.setTreasures(current.getTreasures(3) - amount,3);
+                current.setGold(current.getGold()+amount*40);
+                cout << "Pleasure doing business with you!" << endl << "You now have " << current.getGold() << " gold." <<endl;
+            }
+        }
+        else if(num == 5){
+            cout << "Are you sure you want to sell " << amount << " Gem-Encrusted Goblets for " << amount*50 << " Gold? (y/n)" <<endl;
+            cin >> answer;
+            if(answer == "y"){
+                current.setTreasures(current.getTreasures(4) - amount,4);
+                current.setGold(current.getGold()+amount*50);
+                cout << "Pleasure doing business with you!" << endl << "You now have " << current.getGold() << " gold." <<endl;
+            }
+        }
+        else if (num <= 0 || num >6)
+        {
+            cout << "Invalid input." << endl;
+            cout << "Enter a new number" << endl;
+            cin >> num;
+        }
+    }    
+
+    } while (num !=6);
+    return current;
 }
