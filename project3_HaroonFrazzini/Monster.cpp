@@ -61,7 +61,7 @@ Inventory Monster::battle(Inventory current){
                 removeMonster(name);
             }
             else{
-
+                current = surrender(current);
             }
         }
         else if(num == 2){
@@ -88,6 +88,9 @@ bool Monster::attack(Inventory current){
         d = 4;
     }
     int a = current.getArmor();
+    if( a > 5){
+        a = 5;
+    }
     int c = rating;
     srand(time(0));
     int r_one = rand() % 6 + 1;
@@ -104,6 +107,31 @@ bool Monster::attack(Inventory current){
 }
 
 Inventory Monster::surrender(Inventory current){
+    int random = 0;
+    current.setGold(int(current.getGold()*.75));
+    if(current.getIngredients() > 30){
+        current.setIngredients(current.getIngredients() -30);
+    } 
+    else{
+        current.setIngredients(0);
+    }
+
+    for(int i = current.getLives().size()-1; i > 0; i++){
+        random = rand() % 100 + 1;
+        if(current.getArmor() >= i){
+            if(random <= 5){
+                current.setLives(i);
+                current.setArmor(current.getArmor() -1);
+            }
+        }
+        else{
+            if(random <= 10){
+                current.setLives(i);
+                current.setArmor(current.getArmor() -1);
+            }
+        }
+    }
+
     return current;
 }
 

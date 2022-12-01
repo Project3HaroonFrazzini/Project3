@@ -13,6 +13,7 @@ using namespace std;
 class Inventory{
 
     private:
+    vector<bool> lives;
     int gold;
     int keys;
 
@@ -27,6 +28,9 @@ class Inventory{
     Inventory();
 
     void printInventory();
+
+    vector<bool> getLives();
+    void setLives(int);
 
     int getGold();
     void setGold(int);

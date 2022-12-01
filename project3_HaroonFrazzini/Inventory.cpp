@@ -12,6 +12,7 @@
 using namespace std;
 
 Inventory::Inventory(){
+    lives = {true,true,true,true,true};
     gold = 100;
     keys = 0;
 
@@ -31,6 +32,13 @@ void Inventory::printInventory(){
     string armor_print    =   "|  Armor      | " + to_string(armor);
     string treasure =        "|  Treasures  | R: " + to_string(treasures[0]) + " |  N: " + to_string(treasures[1]) + " |  B: " + to_string(treasures[2]) + " | C: " + to_string(treasures[3]) + " | G: " + to_string(treasures[4]) + " |";
     cout << menu << endl << gold_print << endl << cookware_print << endl << weapon << endl << armor_print << endl << treasure << endl;
+}
+
+vector<bool> Inventory::getLives(){
+    return lives;
+}
+void Inventory::setLives(int index){
+    lives[index] = false;
 }
 
 int Inventory::getGold(){
