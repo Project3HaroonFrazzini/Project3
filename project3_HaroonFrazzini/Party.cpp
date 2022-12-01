@@ -81,39 +81,39 @@ void Party:: ActionMenu()
     {
         cout << "Choose an option" << endl;
         cin >> choice;
-    do
-    {
-        switch (choice)
+        do
         {
-            case 1:
-                char direction;
-                cout << " Choose a direction to move" << endl;
-                cin >> direction;
-                map.move(direction);
-                for(int i = 0; i < 5; i++)
-                {
-                    int randFullnessChance = rand() % 100 + 1;
-                    if(randFullnessChance <= 20)
+            switch (choice)
+            {
+                case 1:
+                    char direction;
+                    cout << " Choose a direction to move" << endl;
+                    cin >> direction;
+                    map.move(direction);
+                    for(int i = 0; i < 5; i++)
                     {
-                        getFullness(i).setFullness(-1);
+                        int randFullnessChance = rand() % 100 + 1;
+                        if(randFullnessChance <= 20)
+                        {
+                            getFullness(i).setFullness(-1);
+                        }
                     }
-                }
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            default:
-                while((choice < 0))
-                {
-                cout << "Please enter a valid input" << endl;
-                }
-                break;
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    while((choice < 0))
+                    {
+                    cout << "Please enter a valid input" << endl;
+                    }
+                    break;
+            }
         }
-    }
-    while(choice != 5);
+        while(choice != 5);
     }
     else
     {
