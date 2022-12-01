@@ -31,6 +31,7 @@ class Inventory{
 
     vector<bool> getLives();
     void setLives(int);
+    void removeLives(int);
 
     int getGold();
     void setGold(int);

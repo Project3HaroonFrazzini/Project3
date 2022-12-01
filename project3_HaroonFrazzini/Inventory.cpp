@@ -40,6 +40,9 @@ vector<bool> Inventory::getLives(){
 void Inventory::setLives(int index){
     lives[index] = false;
 }
+void Inventory::removeLives(int index){
+    lives.erase(lives.begin() + index);
+}
 
 int Inventory::getGold(){
     return gold;
