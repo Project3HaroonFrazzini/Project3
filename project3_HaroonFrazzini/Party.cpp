@@ -101,7 +101,7 @@ void Party:: ActionMenu()
         {
 
         }
-        while();
+        while( 1 != 1);
     }
 }
 void Party:: MainMenu()
