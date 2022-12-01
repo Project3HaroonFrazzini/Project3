@@ -63,30 +63,46 @@ void Party:: StatusUpdate(Inventory inv)
 }
 void Party:: ActionMenu()
 {
+    srand(time(0));
+    //rand()%100 + 1;
     int choice = 0;
-    cout << "Choose an option" << endl;
-    cin >> choice;
+    if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false)
+    {
+        cout << "Choose an option" << endl;
+        cin >> choice;
     do
     {
-    switch (choice)
-    {
-    case 1:
-        break;
-    case 2:
-        break;
-    case 3:
-        break;
-    case 4:
-        break;
-    default:
-        while((choice < 0))
+        switch (choice)
         {
-        cout << "Please enter a valid input" << endl;
+            case 1:
+                char direction;
+                cout << " Choose a direction to move" << endl;
+                cin >> direction;
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                while((choice < 0))
+                {
+                cout << "Please enter a valid input" << endl;
+                }
+                break;
         }
-        break;
-    }
     }
     while(choice != 5);
+    }
+    else
+    {
+        do
+        {
+
+        }
+        while();
+    }
 }
 void Party:: MainMenu()
 {
