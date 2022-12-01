@@ -92,7 +92,7 @@ Inventory Party:: Misfortunes()
             }
 
         }
-        else if(rand <= 60)
+        else if(rand <= 40)
         {
             rand = rand()%2 + 1;
             //weapons
@@ -104,10 +104,40 @@ Inventory Party:: Misfortunes()
                 {
                     if(i == rand)
                     {
+                        cout << "Your weapon at index (add index here) broke" << endl;
                         inv.setWeapons(inv.getWeapons(i)-1,i);
                     }
                 }
             }
+            //remove random armor
+            else
+            {
+                cout << "Your armor broke" << endl;
+                inv.setArmor(inv.getArmor()-1);
+            }
+        }
+        else if(rand <= 70)
+        {
+            //Food poisoning: One party member got food poisoning, causing them to lose 10 points of hunger. If this causes them to reach zero fullness, they die of
+            // hunger immediately.
+            rand = rand()%5;
+            for(int i = 0; i < 5)
+            {
+                if(i == rand)
+                {
+                    setFullness(getFullness(i)-1,i);
+                    if(getFullness(1) <= 0)
+                    {
+                        //dude is dead
+                        names.remove(i);
+                        fullnessValues.remove(i);
+                    }
+                }
+            }
+        }
+        else
+        {
+
         }
     }
 
