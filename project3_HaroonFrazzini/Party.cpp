@@ -75,15 +75,37 @@ Inventory Party:: Misfortunes()
                 rand = rand()%3 + 1;
                 if(rand == 1)
                 {
-                    inv.setCookware(getCookWare(),0)
+                    inv.setCookware(getCookWare(0)-1,0);
                 }
                 else if(rand == 2)
                 {
-
+                    inv.setCookware(getCookWare(1)-1,1);
                 }
                 else
                 {
+                    inv.setCookware(getCookWare(2)-1,2);
+                }
+            }
+            else
+            {
+                inv.setArmor(inv.getArmor()-1);
+            }
 
+        }
+        else if(rand <= 60)
+        {
+            rand = rand()%2 + 1;
+            //weapons
+            if(rand == 1)
+            {
+                rand = rand()%5;
+                // tryna go through weapons array and if i = the rand value, remove weapons[i]
+                for(int i = 0; i < 4 )
+                {
+                    if(i == rand)
+                    {
+                        inv.setWeapons(inv.getWeapons(i)-1,i);
+                    }
                 }
             }
         }
