@@ -22,7 +22,6 @@ Party::Party()
     fullnessValues = {0,0,0,0,0};
     anger = 0;
     Inventory inv = Inventory();
-    keys = 0;
     roomsCleared = 0;
     Map map = Map();
 }
@@ -37,10 +36,6 @@ string Party::getName(int index)
 void Party::setName(int index, string name)
 {
     names[index] = name;
-}
-int Party:: getKeys()
-{
-    return keys;
 }
 int Party:: getroomsCleared()
 {
@@ -151,7 +146,7 @@ Inventory Party:: Misfortunes()
                 }
             }
         }
-        else if((map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true) && (key == 0))
+        else if((map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true) && (inv.getKeys() == 0))
         {
             randum = rand()%4 + 1;
             for(int i = 1; i <= 4; i++)
@@ -168,7 +163,7 @@ Inventory Party:: Misfortunes()
 void Party:: StatusUpdate(Inventory inv)
 {
     cout << "+-------------+\n|      STATUS      |\n+-------------+\n";
-    cout << "| Rooms Cleared: " << getroomsCleared() << " | Keys: " << getKeys() << " | Sorcerer Anger\n"  << "+-------------+" << endl;
+    cout << "| Rooms Cleared: " << getroomsCleared() << " | Keys: " << inv.getKeys() << " | Sorcerer Anger\n"  << "+-------------+" << endl;
     inv.printInventory();
     cout << "+------Party------+" << endl;
     for(int i = 0; i < 4; i++)
@@ -182,6 +177,7 @@ void Party:: ActionMenu()
     srand(time(0));
     //rand()%100 + 1;
     int choice = 0;
+    int randum;
     Monster monst = Monster(roomsCleared);
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false)
     {
@@ -206,6 +202,30 @@ void Party:: ActionMenu()
                     }
                     break;
                 case 2:
+                    if(map.isExplored(map.getPlayerRow(),map.getPlayerCol()))
+                    {
+                        randum = rand()%100 + 1;
+                        // player finds a key
+                        if(randum <= 10)
+                        {
+                            inv.setKeys(inv.getKeys()+1);
+                        }
+                        // player finds a treasure
+                        else if(randum <= 20)
+                        {
+                            merch.setPrice(roomsCleared);
+                        }
+                        // player fights a random monster
+                        else if(randum <= 40)
+                        {
+                            monst.battle(inv);
+                        }
+                    }
+                    else
+                    {
+                        cout << "This space cannot be explored" << endl;
+                        break;
+                    }
                     break;
                 case 3:
                     inv = monst.battle(inv);
@@ -228,6 +248,7 @@ void Party:: ActionMenu()
             }
         }
         while(choice != 5);
+        cout << "sorry that u lost!!" << endl;
     }
     else
     {

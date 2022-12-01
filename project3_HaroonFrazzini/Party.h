@@ -20,7 +20,6 @@ class Party
     Inventory inv;
     Merchant merch;
     Map map;
-    int keys;
     int roomsCleared;
 
     public:
@@ -29,7 +28,6 @@ class Party
     string getName(int);
     void StatusUpdate(Inventory);
     void ActionMenu();
-    int getKeys();
     int getroomsCleared();
     int getAnger();
     Party();
