@@ -269,3 +269,81 @@ void Party:: MainMenu()
     map.displayMap();
     ActionMenu();
 }
+
+bool Party::doorPuzzle(){
+    int strikes = 0;
+    bool answered = false;
+    string answer = "";
+
+    srand(time(0));
+    do{
+    int door = rand() % 3 + 1; // 1 = Boulder, 2 = Parchment, 3 = Shears
+    cout << "Choose one of the following: (B) Boulder, (P) Parchment, (S) Shears." <<endl;
+    cin >> answer;
+    if(answer == "B"){
+        //answered = true;
+        if(door == 1){
+            cout << "I choose Boulder!" <<endl;
+            cout << "Uh oh, we tied! Let's play again." <<endl;
+        }
+        else if(door == 2){
+            cout << "I choose Parchment!" << endl;
+            cout << "HaHa I win! Thats one strike for you" <<endl;
+            strikes++;
+            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
+        }
+        else if (door == 3){
+            cout << "I choose Shears!" <<endl;
+            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
+            answered = true;
+            break;
+        }
+    }
+    else if(answer == "P"){
+        if(door == 1){
+            cout << "I choose Boulder!" <<endl;
+            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
+            answered = true;
+            break;
+        }
+        else if(door == 2){
+            cout << "I choose Parchment!" << endl;
+            cout << "Uh oh, we tied! Let's play again." <<endl;
+        }
+        else if (door == 3){
+            cout << "I choose Shears!" <<endl;
+            cout << "HaHa I win! Thats one strike for you" <<endl;
+            strikes++;
+            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
+        }
+    }
+    else if(answer == "S"){
+        if(door == 1){
+            cout << "I choose Boulder!" <<endl;
+            cout << "HaHa I win! Thats one strike for you" <<endl;
+            strikes++;
+            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
+        }
+        else if(door == 2){
+            cout << "I choose Parchment!" << endl;
+            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
+            answered = true;
+            break;
+        }
+        else if (door == 3){
+            cout << "I choose Shears!" <<endl;
+            cout << "Uh oh, we tied! Let's play again." <<endl;
+        }
+    }
+    else{
+        cout << "Invalid Input." <<endl;
+    }
+    }while(!answered || strikes != 3);
+
+    if(strikes == 3){
+        return false;
+    }
+    else{
+        return true;
+    }
+}

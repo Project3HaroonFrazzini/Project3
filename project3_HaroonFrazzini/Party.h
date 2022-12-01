@@ -39,6 +39,7 @@ class Party
     void removeName(int);
     void removeFullness(int);
     void deathFunc(int);
+    bool doorPuzzle();
 
 };
 #endif
