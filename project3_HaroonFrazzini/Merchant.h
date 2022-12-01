@@ -14,7 +14,7 @@ class Merchant
     public:
 
     Merchant();
-    Merchant(int);
+    void Merchant::setPrice(int rooms);
 
     Inventory menu(Inventory);
 

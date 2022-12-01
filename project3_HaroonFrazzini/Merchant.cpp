@@ -14,7 +14,7 @@ Merchant:: Merchant()
 {
     priceMultiplier = 1;
 }
-Merchant:: Merchant(int rooms){
+void Merchant::setPrice(int rooms){
     priceMultiplier = 1 + (.25 * rooms);
 }
 
