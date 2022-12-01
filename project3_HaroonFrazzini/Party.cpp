@@ -20,6 +20,8 @@ Party::Party()
     vector <int> fullnessValues = {0,0,0,0,0};
     anger = 0;
     Inventory inv = Inventory();
+    keys = 0;
+    roomsCleared = 0;
 }
 int Party::getFullness(int index)
 {
@@ -39,23 +41,28 @@ void Party:: StatusUpdate(Inventory inv)
 {
     cout << "+-------------+\n| STATUS      |\n+-------------+\n";
     inv.printInventory();
+    cout << "\n +------Party------+" << endl;
+    for(int i = 0; i <= 5; i++)
+    {
+        //cout << names[i] << " | " << fullnessValues[i] << endl;
+    }
 }
 void Party:: ActionMenu()
 {
     int choice = 0;
     cout << "Choose an option" << endl;
-    do()
+    do
     {
     switch (choice)
     {
-    case 1;
-        ""
+    case 1:
+
         break;
     case 2:
         break;
-    case 3;
+    case 3:
         break;
-    case 4;
+    case 4:
         break;
     default:
         while(!(choice > 0))
@@ -66,5 +73,4 @@ void Party:: ActionMenu()
     }
     }
     while(choice != 5);
-
 }

@@ -17,6 +17,8 @@ class Party
     int anger;
     Inventory inv;
     Merchant merch;
+    int keys;
+    int roomsCleared;
 
     public:
     int getFullness(int);
