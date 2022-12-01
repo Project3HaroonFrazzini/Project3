@@ -9,7 +9,9 @@
 #include "Inventory.h"
 #include "Merchant.h"
 #include "Map.h"
+#include "Monster.h"
 #include <vector>
+
 
 class Party
 {

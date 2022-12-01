@@ -7,6 +7,7 @@
 #include "Inventory.h"
 #include "Map.h"
 #include "Monster.h"
+#include "Merchant.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -181,23 +182,24 @@ void Party:: ActionMenu()
     Monster monst = Monster(roomsCleared);
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false)
     {
-        cout << "Choose an option" << endl;
-        cin >> choice;
         do
         {
+            cout << "Choose an option" << endl;
+            cin >> choice;
             switch(choice)
             {
                 case 1:
                     char direction;
                     cout << " Choose a direction to move" << endl;
                     cin >> direction;
-                    map.move(direction);
-                    for(int i = 0; i < 5; i++)
-                    {
-                        int randFullnessChance = rand() % 100 + 1;
-                        if(randFullnessChance <= 20)
+                    if(map.move(direction)){
+                        for(int i = 0; i < 5; i++)
                         {
-                            setFullness(getFullness(i) - 1,i);
+                            int randFullnessChance = rand() % 100 + 1;
+                            if(randFullnessChance <= 20)
+                            {
+                                setFullness(getFullness(i) - 1,i);
+                            }
                         }
                     }
                     break;
@@ -208,11 +210,13 @@ void Party:: ActionMenu()
                         // player finds a key
                         if(randum <= 10)
                         {
+                            cout << "You found a key cuh!" << endl;
                             inv.setKeys(inv.getKeys()+1);
                         }
                         // player finds a treasure
                         else if(randum <= 20)
                         {
+                            cout << "You found a treasure" << endl;
                             merch.setPrice(roomsCleared);
                         }
                         // player fights a random monster

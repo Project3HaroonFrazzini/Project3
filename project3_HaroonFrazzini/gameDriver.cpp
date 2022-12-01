@@ -5,6 +5,9 @@
 
 #include "Inventory.h"
 #include "Party.h"
+#include "Merchant.h"
+#include "Monster.h"
+#include "Map.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -14,11 +17,10 @@ using namespace std;
 
 int main(){
     Inventory test = Inventory();
-
     //test.printInventory();
 
     Party par = Party();
     //par.getFullness(0);
-    par.StatusUpdate(test);
-    par.MainMenu();
+    par.ActionMenu();
+    //par.MainMenu();
 }
