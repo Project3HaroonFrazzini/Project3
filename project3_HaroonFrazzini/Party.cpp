@@ -6,6 +6,7 @@
 #include "Party.h"
 #include "Inventory.h"
 #include "Map.h"
+#include "Monster.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -181,13 +182,14 @@ void Party:: ActionMenu()
     srand(time(0));
     //rand()%100 + 1;
     int choice = 0;
+    Monster monst = Monster(roomsCleared);
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false)
     {
         cout << "Choose an option" << endl;
         cin >> choice;
         do
         {
-            switch (choice)
+            switch(choice)
             {
                 case 1:
                     char direction;
@@ -206,7 +208,6 @@ void Party:: ActionMenu()
                 case 2:
                     break;
                 case 3:
-                    Monster monst = Monster(roomsCleared);
                     inv = monst.battle(inv);
                     for(int i = 0; i < inv.getLives().size(); i++)
                     {
