@@ -16,8 +16,8 @@ using namespace std;
 
 Party::Party()
 {
-    vector <string> names = {"","","","",""};
-    vector <int> fullnessValues = {0,0,0,0,0};
+    names = {"","","","",""};
+    fullnessValues = {0,0,0,0,0};
     anger = 0;
     Inventory inv = Inventory();
     keys = 0;
@@ -35,15 +35,29 @@ void Party::setName(int index, string name)
 {
     names[index] = name;
 }
+int Party:: getKeys()
+{
+    return keys;
+}
+int Party:: getroomsCleared()
+{
+    return roomsCleared;
+}
+int Party:: getAnger()
+{
+    return anger;
+}
 void Party:: StatusUpdate(Inventory inv)
 {
-    cout << "+-------------+\n| STATUS      |\n+-------------+\n";
+    cout << "+-------------+\n|      STATUS      |\n+-------------+\n";
+    cout << "| Rooms Cleared: " << getroomsCleared() << " | Keys: " << getKeys() << " | Sorcerer Anger\n"  << "+-------------+" << endl;
     inv.printInventory();
-    cout << "\n +------Party------+" << endl;
+    cout << "+------Party------+" << endl;
     for(int i = 0; i < 4; i++)
     {
-        cout << getName(i) << " | " << getFullness(i) << endl;
+        cout << "| " <<getName(i) << " | " << getFullness(i) << endl;
     }
+    cout << "+-------------+";
 }
 void Party:: ActionMenu()
 {

@@ -27,6 +27,9 @@ class Party
     string getName(int);
     void StatusUpdate(Inventory);
     void ActionMenu();
+    int getKeys();
+    int getroomsCleared();
+    int getAnger();
     Party();
 
 };
