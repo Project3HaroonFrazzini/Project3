@@ -16,6 +16,7 @@ class Monster
     private:
     string name;
     int rating;
+    vector<string> used_names;
 
     public:
     string getName();
@@ -27,7 +28,7 @@ class Monster
     Inventory battle(Inventory current);
     Inventory surrender(Inventory current);
     
-    void removeMonster(string);
+    bool checkNames(string);
     string getMonster();
 };
 #endif
