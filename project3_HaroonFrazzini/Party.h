@@ -40,6 +40,7 @@ class Party
     void removeFullness(int);
     void deathFunc(int);
     bool doorPuzzle();
+    void Cook();
 
 };
 #endif

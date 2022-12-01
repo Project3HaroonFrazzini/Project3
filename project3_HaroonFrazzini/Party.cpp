@@ -161,6 +161,46 @@ Inventory Party:: Misfortunes()
     }
 
 }
+void Party:: Cook()
+{
+    char choice;
+    int ingredientsUsed;
+    int meals = 0;
+    if(inv.getIngredients() < 5)
+    {
+        cout << "You don't have enough ingredients to cook!" << endl;
+        return;
+    }
+    cout << "How many ingredients do you want to use?" << endl;
+    cin >> ingredientsUsed;
+    while(ingredientsUsed > inv.getIngredients())
+    {
+        cout << "You do not have that many ingredients!" << endl;
+        cout << "How many ingredients do you want to use?" << endl; 
+    }
+    cout << "What cookware do you want to use?\n | 1. Ceramic Pot (P)\n | 2. Frying Pan (F)\n | 3. Cauldron (C)" << endl;
+    cin >> choice;
+    while(choice != 'P' || choice != 'F' || choice != 'C')
+    {
+        cout << "Invalid input" << endl;
+        cout << "What cookware do you want to use?\n | 1. Ceramic Pot (P)\n | 2. Frying Pan (F)\n | 3. Cauldron (C)" << endl;
+        cin  >> choice;
+    }
+    meals = ingredientsUsed/5;
+    if(choice == 'P')
+    {
+        
+    }
+    }
+    else if(choice == 'F')
+    {
+
+    }
+    else
+    {
+
+    }
+}
 void Party:: StatusUpdate(Inventory inv)
 {
     cout << "+-------------+\n|      STATUS      |\n+-------------+\n";
