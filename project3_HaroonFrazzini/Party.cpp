@@ -49,16 +49,10 @@ int Party:: getAnger()
 {
     return anger;
 }
-int Party:: setFullness(int amount)
+int Party:: setFullness(int newFullness, int index)
 {
-    if(amount < 0)
-    {
-      fullness = fullness - amount;
-    }
-    else{
-        fullness = fullness + amount;
-    }
-    return fullness;
+    fullnessValues[index] = newFullness;
+    return fullnessValues[index];
 }
 void Party:: StatusUpdate(Inventory inv)
 {
@@ -95,7 +89,7 @@ void Party:: ActionMenu()
                         int randFullnessChance = rand() % 100 + 1;
                         if(randFullnessChance <= 20)
                         {
-                            getFullness(i).setFullness(-1);
+                            setFullness(getFullness(i) - 1,i);
                         }
                     }
                     break;
