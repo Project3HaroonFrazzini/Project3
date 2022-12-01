@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -17,5 +18,6 @@ int main(){
     //test.printInventory();
 
     Party par = Party();
+    //par.getFullness(0);
     par.StatusUpdate(test);
 }

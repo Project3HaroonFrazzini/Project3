@@ -25,9 +25,7 @@ Party::Party()
 }
 int Party::getFullness(int index)
 {
-    int toReturn;
-    toReturn = fullnessValues[index];
-    return toReturn;
+    return fullnessValues[index];
 }
 string Party::getName(int index)
 {
@@ -42,9 +40,9 @@ void Party:: StatusUpdate(Inventory inv)
     cout << "+-------------+\n| STATUS      |\n+-------------+\n";
     inv.printInventory();
     cout << "\n +------Party------+" << endl;
-    for(int i = 0; i <= 5; i++)
+    for(int i = 0; i < 4; i++)
     {
-        //cout << names[i] << " | " << fullnessValues[i] << endl;
+        cout << getName(i) << " | " << getFullness(i) << endl;
     }
 }
 void Party:: ActionMenu()

@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Inventory.h"
 #include "Merchant.h"
+#include <vector>
 
 class Party
 {
