@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Inventory.h"
 #include "Merchant.h"
+#include "Map.h"
 #include <vector>
 
 class Party
@@ -18,6 +19,7 @@ class Party
     int anger;
     Inventory inv;
     Merchant merch;
+    Map map;
     int keys;
     int roomsCleared;
 
@@ -31,6 +33,7 @@ class Party
     int getroomsCleared();
     int getAnger();
     Party();
+    void MainMenu();
 
 };
 #endif

@@ -5,6 +5,7 @@
 
 #include "Party.h"
 #include "Inventory.h"
+#include "Map.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -22,6 +23,7 @@ Party::Party()
     Inventory inv = Inventory();
     keys = 0;
     roomsCleared = 0;
+    Map map = Map();
 }
 int Party::getFullness(int index)
 {
@@ -63,12 +65,12 @@ void Party:: ActionMenu()
 {
     int choice = 0;
     cout << "Choose an option" << endl;
+    cin >> choice;
     do
     {
     switch (choice)
     {
     case 1:
-
         break;
     case 2:
         break;
@@ -77,7 +79,7 @@ void Party:: ActionMenu()
     case 4:
         break;
     default:
-        while(!(choice > 0))
+        while((choice < 0))
         {
         cout << "Please enter a valid input" << endl;
         }
@@ -85,4 +87,10 @@ void Party:: ActionMenu()
     }
     }
     while(choice != 5);
+}
+void Party:: MainMenu()
+{
+    StatusUpdate(inv);
+    map.displayMap();
+    ActionMenu();
 }

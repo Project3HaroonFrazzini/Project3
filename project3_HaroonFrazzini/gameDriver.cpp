@@ -20,4 +20,5 @@ int main(){
     Party par = Party();
     //par.getFullness(0);
     par.StatusUpdate(test);
+    par.MainMenu();
 }
