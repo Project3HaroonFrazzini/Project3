@@ -6,6 +6,9 @@
 #define MONSTER_H
 #include <vector>
 #include <iostream>
+#include "Inventory.h"
+
+using namespace std;
 
 class Monster
 {
@@ -18,7 +21,12 @@ class Monster
     string getName();
     int getRating();
     Monster();
-    
+    Monster(int);
 
+    bool attack(Inventory);
+    Inventory battle(Inventory current);
+    Inventory surrender(Inventory current);
+    
+    
 };
 #endif

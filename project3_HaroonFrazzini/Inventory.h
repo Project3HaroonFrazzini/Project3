@@ -48,7 +48,7 @@ class Inventory{
     int getArmor();
     void setArmor(int armors);
 
-    vector<int> getWeapons();
+    int getWeapons(int weaponIndex);
     void setWeapons(int weaponAmt, int weaponIndex);
 
     void setTreasures(int treasureAmt, int treasureIndex);

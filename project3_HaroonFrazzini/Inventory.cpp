@@ -78,9 +78,9 @@ int Inventory::getArmor()
 void Inventory::setArmor(int armors){
     armor = armors;
 }
-vector<int> Inventory::getWeapons()
+int Inventory::getWeapons(int weaponIndex)
 {
-    return weapons;
+    return weapons[weaponIndex];
 }
 void Inventory::setWeapons(int weaponAmt, int weaponIndex){
     weapons[weaponIndex] = weapons[weaponIndex] + weaponAmt;
