@@ -38,6 +38,7 @@ class Party
     Inventory Misfortunes();
     void removeName(int);
     void removeFullness(int);
+    void deathFunc(int);
 
 };
 #endif

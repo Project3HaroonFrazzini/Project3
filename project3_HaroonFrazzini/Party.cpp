@@ -56,11 +56,18 @@ int Party:: setFullness(int newFullness, int index)
 }
 void Party:: removeName(int index)
 {
-    names.remove(index);
+    names.erase(index);
 }
 void Party:: removeFullness(int index)
 {
-    fullnessValues.remove(index);
+    fullnessValues.erase(index);
+}
+void Party:: deathFunc(int index)
+{
+    cout << "Oh no, party member" << getName(i) << " died!!!!" << endl;
+    removeName(i);
+    removeFullness(i);
+    inv.removeLives(i);
 }
 Inventory Party:: Misfortunes()
 {
@@ -150,9 +157,7 @@ Inventory Party:: Misfortunes()
             {
                 if(i == rand)
                 {
-                    cout << "Oh no, party member" << getName(i) << " died!!!!" << endl;
-                    removeName(i);
-                    removeFullness(i);
+                    deathFunc(i);
                 }
             }
         }
@@ -201,6 +206,15 @@ void Party:: ActionMenu()
                 case 2:
                     break;
                 case 3:
+                    Monster monst = Monster(roomsCleared);
+                    inv = monst.battle(inv);
+                    for(int i = 0; i < inv.getLives().size(); i++)
+                    {
+                        if(inv.getLives()[i] == false)
+                        {
+                            deathFunc(i);
+                        }
+                    }
                     break;
                 case 4:
                     break;
