@@ -54,6 +54,42 @@ int Party:: setFullness(int newFullness, int index)
     fullnessValues[index] = newFullness;
     return fullnessValues[index];
 }
+Inventory Party:: Misfortunes()
+{
+    srand(time(0));
+    int rand = rand()%100 + 1;
+    if(rand <= 40)
+    {
+        rand = rand()%100 + 1;
+        if(rand <= 30)
+        {
+            cout << "OH NO! Your team was robbed by dungeon bandits!" << endl;
+            rand = rand()%3+ 1;
+            if(rand == 1)
+            {
+                cout << "You lost 10 ingredients!!!!" << endl;
+                inv.setIngredients(inv.getIngredients()-10);
+            }
+            else if(rand == 2)
+            {
+                rand = rand()%3 + 1;
+                if(rand == 1)
+                {
+                    inv.setCookware(getCookWare(),0)
+                }
+                else if(rand == 2)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+    }
+
+}
 void Party:: StatusUpdate(Inventory inv)
 {
     cout << "+-------------+\n|      STATUS      |\n+-------------+\n";

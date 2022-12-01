@@ -35,6 +35,7 @@ class Party
     Party();
     void MainMenu();
     int setFullness(int, int);
+    Inventory Misfortunes();
 
 };
 #endif
