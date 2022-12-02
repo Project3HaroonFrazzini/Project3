@@ -178,7 +178,7 @@ return the updated inventory
 */
 Inventory Monster::surrender(Inventory current){
     int random = 0;
-    cout << "You lost " << current.getGold() - current.getGold()*.75 << " gold and ";
+    cout << "You lost " << int(current.getGold() - current.getGold()*.75) << " gold and ";
     current.setGold(int(current.getGold()*.75));
     if(current.getIngredients() > 30){
         current.setIngredients(current.getIngredients() -30);
