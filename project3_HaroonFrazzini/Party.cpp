@@ -14,7 +14,6 @@
 #include <stdlib.h> 
 #include <time.h>   
 #include <vector>
-#include "resources.cpp"
 
 using namespace std;
 
