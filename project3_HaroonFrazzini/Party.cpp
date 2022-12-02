@@ -679,11 +679,13 @@ void Party:: ActionMenu()
 }
 int Party:: getRandomRow(int num_rows)
 {
-
+    srand(time(0));
+    return rand() % num_rows;
 }
 int Party:: getRandomColumn(int num_columns)
 {
-
+    srand(time(0));
+    return rand() % num_columns;
 }
 Map Party:: setMap(Map map)
 {
