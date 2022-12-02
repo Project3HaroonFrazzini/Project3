@@ -70,7 +70,9 @@ int Party:: getAnger()
 }
 int Party:: setFullness(int newFullness, int index)
 {
+    
     fullnessValues[index] = newFullness;
+    sortFunction();
     return fullnessValues[index];
 }
 void Party:: removeName(int index)
