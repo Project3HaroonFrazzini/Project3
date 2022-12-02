@@ -87,7 +87,7 @@ Inventory Monster::battle(Inventory current){
     string name = getName();
     
     cout << name << " AHEAD! THEY LOOK HOSTILE!!" <<endl;
-    int totWeapons = current.getWeapons(0) + current.getWeapons(1) + current.getWeapons(2) + current.getWeapons(3) + current.getWeapons(5);
+    int totWeapons = current.getWeapons(0) + current.getWeapons(1) + current.getWeapons(2) + current.getWeapons(3) + current.getWeapons(4);
     if(totWeapons > 0){
         do{
         cout << "What would you like to do? Choose an option:\n1. Fight the monster\n2. Surrender" <<endl;
