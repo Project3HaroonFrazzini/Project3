@@ -20,12 +20,14 @@ using namespace std;
 Party::Party()
 {
     names = {"","","","",""};
-    fullnessValues = {0,0,0,0,0};
+    fullnessValues = {50,50,50,50,50};
     anger = 0;
     Inventory inv = Inventory();
     roomsCleared = 0;
     Map map = Map();
     Monster monst = Monster();
+    gameEnd = false;
+
 }
 int split2(string input_string,char separator,string arr[],int arr_size){
     if(input_string == ""){
@@ -320,13 +322,6 @@ void Party:: StatusUpdate(Inventory inv)
     }
     cout << "+-------------+";
 }
-void Party:: MainMenu()
-{
-    StatusUpdate(inv);
-    map.displayMap();
-    ActionMenu();
-}
-
 bool Party::doorPuzzle(){
     int strikes = 0;
     bool answered = false;
@@ -737,5 +732,21 @@ void Party:: setMap()
 }
 void Party:: createGame()
 {
+    string inputStr = "";
+    cout << "What is the party leader's name?" << endl;
+    cin >> inputStr;
+    setName(0,inputStr);
+    for(int i = 1; i <= 4; i++)
+    {
+        cout << "What is companion " << i << "'s name?" << endl;
+        cin >> inputStr;
+        setName(i,inputStr);
+    }
+    while(gameEnd != true)
+    {
+        StatusUpdate(inv);
+        displayPartyMap();
+        ActionMenu();
+    }
 
 }

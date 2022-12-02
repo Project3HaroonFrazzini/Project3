@@ -24,6 +24,7 @@ class Party
     Map map;
     int roomsCleared;
     Monster monst;
+    bool gameEnd;
 
     public:
     int getFullness(int);
@@ -36,7 +37,6 @@ class Party
     void setRoomsCleared(int);
     void setAnger();
     Party();
-    void MainMenu();
     int setFullness(int, int);
     Inventory Misfortunes();
     void removeName(int);
