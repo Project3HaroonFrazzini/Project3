@@ -22,7 +22,11 @@ int main(){
 
     Party par = Party();
     //par.getFullness(0);
+   //par.setMap();
+    //par.displayPartyMap();
+    //par.ActionMenu();
     par.createGame();
+
     
     //par.MainMenu();
 }

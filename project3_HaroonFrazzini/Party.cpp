@@ -458,6 +458,7 @@ bool Party::NPCPuzzle()
 }
 void Party:: ActionMenu()
 {
+    cout << "player row and columns" << map.getPlayerRow() << map.getPlayerCol();
     srand(time(0));
     //rand()%100 + 1;
     int choice = 0;
@@ -549,7 +550,7 @@ void Party:: ActionMenu()
         gameEnd = true;
         return;
     }
-    else if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
+    if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
     {
         cout << "This is an NPC Space!" << endl;
         cout << "Choose an option\n1. Move\n2. Speak to an NPC\n3. Give Up" << endl;
@@ -599,7 +600,7 @@ void Party:: ActionMenu()
             StatusUpdate(inv);
         }
     }
-    else if((map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
+    if((map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
     {   
         cout << "This is a room space!" << endl;
         cout << "Choose an option\n1. Move\n2. Open the door\n3. Give Up" << endl;
@@ -703,7 +704,7 @@ void Party:: ActionMenu()
             StatusUpdate(inv);
         }
     }
-    else if((getroomsCleared() == 5) && (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true)))
+    if((getroomsCleared() == 5) && (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true)))
     {
         cout << "You won!" << endl;
         return;
