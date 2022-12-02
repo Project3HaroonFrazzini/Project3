@@ -317,7 +317,7 @@ void Party:: ActionMenu()
     //rand()%100 + 1;
     int choice = 0;
     int randum;
-    Monster monst = Monster(roomsCleared);
+    Monster monst(roomsCleared);
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false)
     {
         do
@@ -377,15 +377,16 @@ void Party:: ActionMenu()
                     }
                     break;
                 case 3:
+                    //cout << "here" << endl;
                     inv = monst.battle(inv);
-                    for(int i = 0; i < inv.getLives().size() - 1; i++)
-                    {
-                        if(inv.getLives()[i] == false)
-                        {
-                            cout << "got here" << endl;
-                            deathFunc(i);
-                        }
-                    }
+                    //for(int i = 0; i < inv.getLives().size(); i++)
+                    //{
+                        //if(inv.getLives().at(i) == false)
+                        //{
+                           // cout << "got here" << endl;
+                            //deathFunc(i);
+                        //}
+                    //}
                     break;
                 case 4:
                     Cook();

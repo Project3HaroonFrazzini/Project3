@@ -25,7 +25,7 @@ Monster::Monster()
 Monster::Monster(int new_rating)
 {
     name = "";
-    rating = new_rating;
+    rating = new_rating+1;
 }
 /*
 Get a random named monster from the file that is the right challenge rating as the number of roomes cleared
