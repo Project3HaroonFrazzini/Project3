@@ -510,7 +510,7 @@ void Party:: ActionMenu()
                         // player fights a random monster
                         else if(randum <= 40)
                         {
-                            monst.battle(inv);
+                            inv = monst.battle(inv);
                         }
                     }
                     else
@@ -584,7 +584,7 @@ void Party:: ActionMenu()
                     }
                     else
                     {
-                        monst.battle(inv);
+                        inv = monst.battle(inv);
                     }
                     map.exploreSpace(map.getPlayerRow(),map.getPlayerCol());
                     map.removeNPC(map.getPlayerRow(),map.getPlayerCol());
