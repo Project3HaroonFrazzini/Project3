@@ -47,68 +47,118 @@ vector<bool> Inventory::getLives(){
 }
 
 /*
-Setter function that y
+Setter function that sets lives
 */
 void Inventory::setLives(int index){
     lives[index] = false;
 }
+/*
+Getter function that removes lives
+*/
 void Inventory::removeLives(int index){
     lives.erase(lives.begin() + index);
 }
 
+/*
+Getter function that gets gold
+*/
 int Inventory::getGold(){
     return gold;
 }
 
+/*
+Setter function that sets Gold
+*/
 void Inventory::setGold(int new_gold){
     gold = new_gold;
 }
 
+/*
+Getter function that gets keys
+*/
 int Inventory::getKeys(){
     return keys;
 }
 
+/*
+Setter function that sets keys
+*/
 void Inventory::setKeys(int new_keys){
     keys = new_keys;
 }
 
+/*
+Getter function that getes ingredients
+*/
 int Inventory::getIngredients()
 {
     return ingredients;
 }
+
+/*
+Setter function that sets ingredients
+*/
 void Inventory::setIngredients(int ingred)
 {
     ingredients = ingred;
 }
 
+/*
+Getter function that gets cookware
+*/
 int Inventory::getCookware(int cookIndex)
 {
     return cookware[cookIndex];
 }
+
+/*
+Setter function that sets cookware
+*/
 void Inventory::setCookware(int cookAmt, int cookIndex)
 {
     cookware[cookIndex] += cookAmt;
 }
 
+/*
+Getter function that gets armor
+*/
 int Inventory::getArmor()
 {
     return armor;
 }
+
+/*
+Setter function that sets armor
+*/
 void Inventory::setArmor(int armors){
     armor = armors;
 }
+
+/*
+Getter function that sets weapons
+*/
 int Inventory::getWeapons(int weaponIndex)
 {
     return weapons[weaponIndex];
 }
+
+/*
+Setter function that sets weapons
+*/
 void Inventory::setWeapons(int weaponAmt, int weaponIndex){
     weapons[weaponIndex] = weapons[weaponIndex] + weaponAmt;
 }
 
+/*
+Setter function that sets treasure
+*/
 void Inventory::setTreasures(int treasureAmt, int treasureIndex){
     treasures[treasureIndex] = treasureAmt;
 }
 
+/*
+Getter function that gets treasure
+*/
 int Inventory::getTreasures(int treasureIndex){
     return treasures[treasureIndex];
 }
