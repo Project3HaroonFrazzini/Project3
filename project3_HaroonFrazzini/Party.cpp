@@ -67,7 +67,7 @@ void Party:: deathFunc(int index)
     removeFullness(index);
     inv.removeLives(index);
 }
-void Party:: getNamesSize()
+int Party:: getNamesSize()
 {
     return names.size();
 }
@@ -199,7 +199,7 @@ void Party:: Cook()
         if(randum <= 25)
         {
             inv.setIngredients(inv.getIngredients()-ingredientsUsed);
-            set
+            inv.setCookware(inv.getCookware(0) - 1, 0);
         }
         else
         {
