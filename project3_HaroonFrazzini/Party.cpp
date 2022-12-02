@@ -793,6 +793,17 @@ void Party:: createGame()
     }
     if(gameEnd == true)
     {
-        cout << "Here are your statistics" << endl;   
+        string myText;
+        cout << "Here are your statistics" << endl;
+        ofstream Results("Results.txt");
+        Results << "leader: " <<names[0] << endl;
+        Results << "Rooms cleared: " << roomsCleared << endl;
+        Results << "Gold: " << inv.getGold() << endl;
+        Results << "Treasures: " << inv.getTreasures(0) << inv.getTreasures(1) << inv.getTreasures(2) <<  endl;
+        Results.close();
+        ifstream readFile("Results.txt");
+        while (getline (readFile, myText)) {
+        cout << myText;
+         
     }
 }
