@@ -293,6 +293,11 @@ void Party:: Cook()
             }
         }
     }
+    for(int i = 0; i < getNamesSize(); i++)
+    {
+        cout << "| " << getName(i) << " | Fullness " << getFullness(i) << endl;
+    }
+    cout << "Remaining kg of food" << inv.getIngredients() << endl;
 }
 void Party:: StatusUpdate(Inventory inv)
 {
