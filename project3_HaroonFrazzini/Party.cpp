@@ -677,15 +677,16 @@ void Party:: ActionMenu()
         }
     }
 }
-Map Party:: setMap(Map map)
-{
-    map.resetMap();
-}
 int Party:: getRandomRow(int num_rows)
 {
 
 }
 int Party:: getRandomColumn(int num_columns)
 {
-    
+
+}
+Map Party:: setMap(Map map)
+{
+    map.resetMap();
+    int num = 0;
 }
