@@ -49,7 +49,7 @@ class Party
     bool NPCPuzzle();
     Map setMap(Map);
     int getRandomRow(int);
-    int getRandomCOlumn(int);
+    int getRandomCol(int);
 
 };
 #endif

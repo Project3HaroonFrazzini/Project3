@@ -682,7 +682,7 @@ int Party:: getRandomRow(int num_rows)
     srand(time(0));
     return rand() % num_rows;
 }
-int Party:: getRandomColumn(int num_columns)
+int Party::getRandomCol(int num_columns)
 {
     srand(time(0));
     return rand() % num_columns;
@@ -691,4 +691,38 @@ Map Party:: setMap(Map map)
 {
     map.resetMap();
     int num = 0;
+    int numRows = map.getNumRows();
+    int numCols = map.getNumCols();
+
+    int row = 0;
+    int col = 0;
+    int rooms = 0;
+    int NPCs = 0;
+
+    map.setPlayerPosition(getRandomRow(numRows),getRandomCol(numCols));
+    bool exit = false;
+    do{
+        row = getRandomRow(numRows);
+        col = getRandomCol(numCols);
+
+        if(!map.isNPCLocation(row,col) && !map.isRoomLocation(row,col) && !map.isDungeonExit(row,col)){
+            map.addRoom(row,col);
+            rooms++;
+        }
+
+    }while(rooms < 5);
+
+    
+    do{
+        row = getRandomRow(numRows);
+        col = getRandomCol(numCols);
+
+        if(!map.isNPCLocation(row,col) && !map.isRoomLocation(row,col) && !map.isDungeonExit(row,col)){
+            map.addNPC(row,col);
+            NPCs++;
+        }
+
+    }while(NPCs < 5);
+
+    return map;
 }
