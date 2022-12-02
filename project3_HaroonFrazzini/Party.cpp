@@ -339,11 +339,18 @@ void Party:: ActionMenu()
                                 setFullness(getFullness(i) - 1,i);
                             }
                         }
+                        break;
+                    }
+                    else
+                    {
+                        cout << "You can't move in that direction, please try again!" << endl;
+                        break;
                     }
                     break;
                 case 2:
-                    if(map.isExplored(map.getPlayerRow(),map.getPlayerCol()))
+                    if(!(map.isExplored(map.getPlayerRow(),map.getPlayerCol())))
                     {
+                        map.exploreSpace(map.getPlayerRow(),map.getPlayerCol());
                         randum = rand()%100 + 1;
                         // player finds a key
                         if(randum <= 10)
@@ -371,10 +378,11 @@ void Party:: ActionMenu()
                     break;
                 case 3:
                     inv = monst.battle(inv);
-                    for(int i = 0; i < inv.getLives().size(); i++)
+                    for(int i = 0; i < inv.getLives().size() - 1; i++)
                     {
                         if(inv.getLives()[i] == false)
                         {
+                            cout << "got here" << endl;
                             deathFunc(i);
                         }
                     }
@@ -393,7 +401,7 @@ void Party:: ActionMenu()
         while(choice != 5);
         cout << "sorry that u lost!!" << endl;
     }
-    else
+    else if(map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true)
     {
         do
         {
