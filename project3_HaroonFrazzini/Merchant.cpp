@@ -140,6 +140,16 @@ Inventory Merchant::buyIngredients(Inventory current)
     }
     return current;
 }
+
+/**
+ * Algorithm: Let's user buy cookware
+ * 1. Set cookware price to the price multiplier
+ * 2. Ask user for how much ingredients they want to buy
+ * 3. Sell them ingredients if they can afford it
+ * 4. Return inventory with updated ingredients and cold
+ * Parameters: Current inventory
+ * Return: User's inventory
+ */
 Inventory Merchant::buyCookware(Inventory current)
 {
     int ceramic = 2*priceMultiplier;

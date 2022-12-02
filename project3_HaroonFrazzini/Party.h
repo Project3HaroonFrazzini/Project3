@@ -52,6 +52,7 @@ class Party
     int getRandomCol(int);
     void displayPartyMap();
     void createGame();
+    void sortFunction();
 
 };
 #endif

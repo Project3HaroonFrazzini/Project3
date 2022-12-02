@@ -322,6 +322,26 @@ void Party:: StatusUpdate(Inventory inv)
     }
     cout << "+-------------+";
 }
+
+void Party::sortFunction(){
+    int temp_hung = 0;
+    string temp_player = "";
+
+    for(int i = 0; i < fullnessValues.size(); i ++){
+        for(int j = 0; j < fullnessValues.size(); j++){
+            if(fullnessValues[i] > fullnessValues[j]){
+                temp_hung = fullnessValues[i];
+                fullnessValues[i] = fullnessValues[j];
+                fullnessValues[j] = temp_hung;
+
+                temp_player = names[i];
+                names[i] = names[j];
+                names[j] = temp_player;
+            }
+        }
+    }
+}
+
 bool Party::doorPuzzle(){
     int strikes = 0;
     bool answered = false;
