@@ -67,6 +67,10 @@ void Party:: deathFunc(int index)
     removeFullness(index);
     inv.removeLives(index);
 }
+void Party:: getNamesSize()
+{
+    return names.size();
+}
 Inventory Party:: Misfortunes()
 {
     srand(time(0));
@@ -164,9 +168,11 @@ Inventory Party:: Misfortunes()
 }
 void Party:: Cook()
 {
+    srand(time(0));
     char choice;
     int ingredientsUsed;
     int meals = 0;
+    int randum;
     if(inv.getIngredients() < 5)
     {
         cout << "You don't have enough ingredients to cook!" << endl;
@@ -187,10 +193,18 @@ void Party:: Cook()
         cout << "What cookware do you want to use?\n | 1. Ceramic Pot (P)\n | 2. Frying Pan (F)\n | 3. Cauldron (C)" << endl;
         cin  >> choice;
     }
-    meals = ingredientsUsed/5;
     if(choice == 'P')
     {
-        
+        randum = rand()%100 + 1;
+        if(randum <= 25)
+        {
+            inv.setIngredients(inv.getIngredients()-ingredientsUsed);
+            set
+        }
+        else
+        {
+            meals = ingredientsUsed/getNamesSize();
+        }
     }
 
     else if(choice == 'F')
