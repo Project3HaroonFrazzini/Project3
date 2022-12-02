@@ -485,6 +485,160 @@ void Party:: ActionMenu()
                                 setFullness(getFullness(i) - 1,i);
                             }
                         }
+                    if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
+    {
+        cout << "This is an NPC Space!" << endl;
+        cout << "Choose an option\n1. Move\n2. Speak to an NPC\n3. Give Up" << endl;
+        cin >> choice;
+        switch(choice)
+        {
+            case 1:
+                char direction;
+                cout << " Choose a direction to move" << endl;
+                cin >> direction;
+                if(map.move(direction) == true){
+                    for(int i = 0; i < 5; i++)
+                    {
+                        int randFullnessChance = rand() % 100 + 1;
+                        if(randFullnessChance <= 20)
+                        {
+                            setFullness(getFullness(i) - 1,i);
+                        }
+                    }
+                    setAnger();
+                    break;
+                }
+                else
+                {
+                    cout << "You can't move in that direction, please try again!" << endl;
+                    break;
+                }
+                break;
+                case 2:
+                    if(NPCPuzzle() == true)
+                    {
+                        merch.setPrice(roomsCleared);
+                        merch.menu(inv);
+                    }
+                    else
+                    {
+                        inv = monst.battle(inv);
+                    }
+                    map.exploreSpace(map.getPlayerRow(),map.getPlayerCol());
+                    map.removeNPC(map.getPlayerRow(),map.getPlayerCol());
+
+                case 3:
+                    cout << "sorry that u lost!!" << endl;
+                    gameEnd = true;
+                    return;
+
+            StatusUpdate(inv);
+        }
+    }
+    if((map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
+    {   
+        cout << "This is a room space!" << endl;
+        cout << "Choose an option\n1. Move\n2. Open the door\n3. Give Up" << endl;
+        cin >> choice;
+        switch(choice)
+        {
+            case 1:
+                char direction;
+                cout << " Choose a direction to move" << endl;
+                cin >> direction;
+                if(map.move(direction) == true){
+                    for(int i = 0; i < 5; i++)
+                    {
+                        int randFullnessChance = rand() % 100 + 1;
+                        if(randFullnessChance <= 20)
+                        {
+                            setFullness(getFullness(i) - 1,i);
+                        }
+                    }
+                    setAnger();
+                    break;
+                }
+                else
+                {
+                    cout << "You can't move in that direction, please try again!" << endl;
+                    break;
+                }
+                break;
+            case 2:
+                if(inv.getKeys() > 0)
+                {
+                    int goldNumTemp = inv.getGold();
+                    monst.setRating(monst.getRating()+1);
+                    inv = monst.battle(inv);
+                    if(inv.getGold() > goldNumTemp)
+                    {
+                        randum = rand()%100 + 1;
+                        if(randum <= 60)
+                        {
+                            Misfortunes();
+                        }
+                        setRoomsCleared(getroomsCleared()+1);
+                        setAnger();
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    else
+                    {
+                        randum = rand()%100 + 1;
+                        if(randum <= 40)
+                        {
+                            Misfortunes();
+                        }
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    //battle the source
+                }
+                else
+                {
+                    if(doorPuzzle() == true)
+                    {
+                        int goldNumTemp = inv.getGold();
+                    monst.setRating(monst.getRating()+1);
+                    inv = monst.battle(inv);
+                    if(inv.getGold() > goldNumTemp)
+                    {
+                        randum = rand()%100 + 1;
+                        if(randum <= 60)
+                        {
+                            Misfortunes();
+                        }
+                        setRoomsCleared(getroomsCleared()+1);
+                        setAnger();
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    else
+                    {
+                        randum = rand()%100 + 1;
+                        if(randum <= 40)
+                        {
+                            Misfortunes();
+                        }
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    }
+                    else
+                    {
+                        randum = rand()%4 + 1;
+                        for(int i = 1; i < 4; i++)
+                        {
+                            if(i == randum)
+                            {
+                                deathFunc(i);
+                            }
+                        }
+                    }
+                }
+            case 3:    
+                gameEnd = true;               
+                cout << "sorry that u lost!!" << endl;
+                return;
+            StatusUpdate(inv);
+        }
+    }
                         break;
                     }
                     else
