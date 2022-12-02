@@ -742,9 +742,10 @@ void Party:: setMap()
         row = getRandomRow(numRows);
         col = getRandomCol(numCols);
 
-        if(!map.isNPCLocation(row,col) && !map.isRoomLocation(row,col) && !map.isDungeonExit(row,col) && (numRows != 0 && numCols != 0)){
-            map.addRoom(row,col);
-            rooms++;
+        if(row != 0 && col != 0){
+            if(map.addRoom(row,col)){
+                rooms++;
+            }
         }
 
     }while(rooms < 5);
@@ -753,10 +754,11 @@ void Party:: setMap()
     do{
         row = getRandomRow(numRows);
         col = getRandomCol(numCols);
-
-        if(!map.isNPCLocation(row,col) && !map.isRoomLocation(row,col) && !map.isDungeonExit(row,col)){
-            map.addNPC(row,col);
-            NPCs++;
+        if(row != 0 && col != 0){
+            if(map.addNPC(row,col)){
+                
+                NPCs++;
+            }
         }
 
     }while(NPCs < 5);
