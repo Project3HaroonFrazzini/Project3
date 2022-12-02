@@ -89,7 +89,7 @@ Inventory Merchant::menu(Inventory current){
  * 1. Set ingredient price to the price multiplier
  * 2. Ask user for how much ingredients they want to buy
  * 3. Sell them ingredients if they can afford it
- * 4. Return inventory with updated ingredients and cold
+ * 4. Return inventory with updated ingredients and gold
  * Parameters: Current inventory
  * Return: User's inventory
  */
@@ -144,9 +144,9 @@ Inventory Merchant::buyIngredients(Inventory current)
 /**
  * Algorithm: Let's user buy cookware
  * 1. Set cookware price to the price multiplier
- * 2. Ask user for how much ingredients they want to buy
- * 3. Sell them ingredients if they can afford it
- * 4. Return inventory with updated ingredients and cold
+ * 2. Ask user for how much coowkare they want to buy
+ * 3. Sell them cookware if they can afford it
+ * 4. Return inventory with updated cookware and gold
  * Parameters: Current inventory
  * Return: User's inventory
  */
@@ -255,6 +255,16 @@ Inventory Merchant::buyCookware(Inventory current)
     }while (num !=4);
     return current;
 }
+
+/**
+ * Algorithm: Let's user buy weapons
+ * 1. Set weapons price to the price multiplier
+ * 2. Ask user for how much weapons they want to buy
+ * 3. Sell them weapons if they can afford it
+ * 4. Return inventory with updated weapons and gold
+ * Parameters: Current inventory
+ * Return: User's inventory
+ */
 Inventory Merchant ::buyWeapons(Inventory current)
 {
     int club = 2*priceMultiplier;
@@ -395,6 +405,15 @@ Inventory Merchant ::buyWeapons(Inventory current)
     } while (num !=6);
     return current;
 }
+/**
+ * Algorithm: Let's user buy armor
+ * 1. Set armor price to the price multiplier
+ * 2. Ask user for how much armor they want to buy
+ * 3. Sell them armor if they can afford it
+ * 4. Return inventory with updated armor and gold
+ * Parameters: Current inventory
+ * Return: User's inventory
+ */
 Inventory Merchant::buyArmor(Inventory current)
 {
     int amount = 0;
@@ -423,6 +442,15 @@ Inventory Merchant::buyArmor(Inventory current)
     }
     return current;
 }
+/**
+ * Algorithm: Let's user sell treasure
+ * 1. Set treasure price to the price multiplier
+ * 2. Ask user for how much treasure they want to sell
+ * 3. Buy their treasure if they can afford it
+ * 4. Return inventory with updated treasre and hold
+ * Parameters: Current inventory
+ * Return: User's inventory
+ */
 Inventory Merchant::sellTreasures(Inventory current)
 {
     int club = 2*priceMultiplier;
