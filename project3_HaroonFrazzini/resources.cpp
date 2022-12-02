@@ -1,10 +1,10 @@
+#include "resources.h"
 #include <iostream>
 #include <fstream>
 #include <string>
-
 using namespace std;
 
-int split(string input_string,char separator,string arr[],int arr_size){
+int resources::split(string input_string,char separator,string arr[],int arr_size){
     if(input_string == ""){
         return 0;
     }

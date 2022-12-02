@@ -14,9 +14,9 @@
 #include <stdlib.h> 
 #include <time.h>   
 #include <vector>
-#include "resources.cpp"
 
 using namespace std;
+//int split(string input_string,char separator,string arr[],int arr_size);
 
 Party::Party()
 {
