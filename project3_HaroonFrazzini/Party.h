@@ -44,6 +44,7 @@ class Party
     int getNamesSize();
     int getFullnessValuesSize();
     bool NPCPuzzle();
+    int split2(string input_string,char separator,string arr[],int arr_size);
 
 };
 #endif
