@@ -528,7 +528,7 @@ void Party:: ActionMenu()
                     map.removeNPC(map.getPlayerRow(),map.getPlayerCol());
 
                 case 3:
-                    cout << "sorry that u lost!!" << endl;
+                    cout << "sorry that u lost!! 1" << endl;
                     gameEnd = true;
                     return;
 
@@ -632,9 +632,10 @@ void Party:: ActionMenu()
                         }
                     }
                 }
+            break;
             case 3:    
                 gameEnd = true;               
-                cout << "sorry that u lost!!" << endl;
+                cout << "sorry that u lost!! 2" << endl;
                 return;
             StatusUpdate(inv);
         }
@@ -700,7 +701,7 @@ void Party:: ActionMenu()
             }
         }
         while(choice != 5);
-        cout << "sorry that u lost!!" << endl;
+        cout << "sorry that u lost!! 3" << endl;
         gameEnd = true;
         return;
     }
@@ -747,7 +748,7 @@ void Party:: ActionMenu()
                     map.removeNPC(map.getPlayerRow(),map.getPlayerCol());
 
                 case 3:
-                    cout << "sorry that u lost!!" << endl;
+                    cout << "sorry that u lost!! 4" << endl;
                     gameEnd = true;
                     return;
 
@@ -853,7 +854,7 @@ void Party:: ActionMenu()
                 }
             case 3:    
                 gameEnd = true;               
-                cout << "sorry that u lost!!" << endl;
+                cout << "sorry that u lost!! 5" << endl;
                 return;
             StatusUpdate(inv);
         }
@@ -957,8 +958,9 @@ void Party:: createGame()
         Results.close();
         ifstream readFile("Results.txt");
         while (getline (readFile, myText)) {
-        cout << myText;
+        cout << myText << endl;
+        }
+        readFile.close();
          
     }
-}
 }
