@@ -129,6 +129,7 @@ Inventory Monster::battle(Inventory current){
     else{
         cout << "You don't have any weapons! You must Surrender. Type anything to continue." <<endl;
         cin >> num;
+        current = surrender(current);
 
     }
     return current;
