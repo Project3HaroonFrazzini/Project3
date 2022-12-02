@@ -16,7 +16,9 @@
 
 using namespace std;
 
-
+/*
+Default constructor that sets the monster rating to 1 and sets the name variable to an empty string
+*/
 Monster::Monster()
 {
     name = "";
