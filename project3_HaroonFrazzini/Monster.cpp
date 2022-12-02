@@ -24,10 +24,17 @@ Monster::Monster()
     name = "";
     rating = 1;
 }
+/*
+Paramatirized constructor that sets the monster rating to the number of rooms cleared + 1 and sets the name variable to an empty string
+*/
 Monster::Monster(int new_rating)
 {
     name = "";
     rating = new_rating+1;
+}
+
+void Monster::setRating(int new_rating){
+    rating = new_rating;
 }
 /*
 Get a random named monster from the file that is the right challenge rating as the number of roomes cleared
@@ -210,7 +217,8 @@ string Monster::getMonster(){
 }
 
 /*
-In order to avoid fighting the same monster twice, make sure that the monster 
+In order to avoid fighting the same monster twice, make sure that the monster name that was chosen is not in the array of monster names that have been fought
+Loop through the whole vector and make sure the current name hasn't been used
 */
 bool Monster::checkNames(string name){
     for(int i = 0; i < used_names.size();i++){

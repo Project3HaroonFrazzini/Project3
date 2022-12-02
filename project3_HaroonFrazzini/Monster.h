@@ -19,6 +19,7 @@ class Monster
     vector<string> used_names;
 
     public:
+    void setRating(int new_rating);
     string getName();
     int getRating();
     Monster();
