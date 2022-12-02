@@ -787,6 +787,6 @@ void Party:: createGame()
     }
     if(gameEnd == true)
     {
-        cout << "You won: here are your statistics" << endl;
+        cout << "Hhere are your statistics" << endl;
     }
 }
