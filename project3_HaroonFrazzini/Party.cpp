@@ -462,7 +462,7 @@ void Party:: ActionMenu()
     //rand()%100 + 1;
     int choice = 0;
     int randum;
-    if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false)
+    if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && (map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false))
     {
         do
         {
@@ -549,7 +549,7 @@ void Party:: ActionMenu()
         gameEnd = true;
         return;
     }
-    else if(map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true)
+    else if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
     {
         cout << "This is an NPC Space!" << endl;
         cout << "Choose an option\n1. Move\n2. Speak to an NPC\n3. Give Up" << endl;
@@ -599,7 +599,7 @@ void Party:: ActionMenu()
             StatusUpdate(inv);
         }
     }
-    else if(map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true)
+    else if((map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true))
     {   
         cout << "This is a room space!" << endl;
         cout << "Choose an option\n1. Move\n2. Open the door\n3. Give Up" << endl;
@@ -779,7 +779,7 @@ void Party:: createGame()
         StatusUpdate(inv);
         ActionMenu();
         displayPartyMap();
-        if((roomsCleared == 5)&& (getNamesSize() < 1))
+        if((roomsCleared == 5)&& (getNamesSize() > 1))
         {
             gameEnd = true;
         }
