@@ -43,6 +43,7 @@ class Party
     void Cook();
     int getNamesSize();
     int getFullnessValuesSize();
+    bool NPCPuzzle();
 
 };
 #endif
