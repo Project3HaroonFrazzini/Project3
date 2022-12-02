@@ -127,8 +127,7 @@ Inventory Monster::battle(Inventory current){
 
     }
     else{
-        cout << "You don't have any weapons! You must Surrender. Type anything to continue." <<endl;
-        cin >> num;
+        cout << "You don't have any weapons! You must Surrender." << endl;
         current = surrender(current);
 
     }
@@ -143,7 +142,7 @@ use the equation to figure out if the battle is won ( >0) or lost (<0)
 return true if its won, return false if its lost
 */
 bool Monster::attack(Inventory current){
-    int w = (current.getWeapons(0) + current.getWeapons(1) + current.getWeapons(2) + current.getWeapons(3) + current.getWeapons(5)) + 1*(current.getWeapons(2)) + 2*(current.getWeapons(3)) + 3*(current.getWeapons(5));
+    int w = (current.getWeapons(0) + current.getWeapons(1) + current.getWeapons(2) + current.getWeapons(3) + current.getWeapons(5)) + 1*(current.getWeapons(2)) + 2*(current.getWeapons(3)) + 3*(current.getWeapons(4));
     int d = 0;
     if(current.getWeapons(0) != 0 && current.getWeapons(1) != 0 && current.getWeapons(2) != 0 && current.getWeapons(3) != 0 && current.getWeapons(4) != 0){
         d = 4;
