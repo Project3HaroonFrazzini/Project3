@@ -24,76 +24,114 @@ void Merchant::setPrice(int rooms){
     priceMultiplier = 1 + (.25 * rooms);
 }
 
-/*
-
-*/
+/**
+ * Algorithm
+ * 1. Display Merchant NPC menu
+ * 2. Print the inventory
+ * 3. Take user input for what they want to buy
+ * 4. Sell user what items they want
+ * 5. Stop when user types in 6
+ * Parameters: User's current inventory
+ * Returns: User's new inventory
+ */
 Inventory Merchant::menu(Inventory current){
+    // set num to 0
     int num = 0;
+    // show that the user is talking to merchant
     cout << "If you're looking to get supplies, you've come to the right place.\nI would be happy to part with some of my wares...for the proper price!" <<endl;
+    // do while loop
     do{
+    // print the inventory
     current.printInventory();
+    // print options
     cout << "Choose one of the following:\n1. Ingredients: To make food, you have to cook raw ingredients.\n2. Cookware: You will need something to cook those ingredients.\n3. Weapons: It's dangerous to go alone, take this!\n4. Armor: If you want to survive monster attacks, you will need some armor.\n5. Sell treasures: If you find anything shiny, I would be happy to take it off your hands.\n6. Leave: Make sure you get everything you need, I'm leaving after this sale!\n" <<endl;
+    // take user input into num
     cin >> num;
+    // buy ingredients
     if(num == 1){
         current = buyIngredients(current);
         //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
     }
+    // buy cookware
     else if(num == 2){
         current = buyCookware(current);
         //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
     }
+    // buy weapons
     else if(num == 3){
         current = buyWeapons(current);
         //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
     }
+    // buy armor
     else if(num == 4){
         current = buyArmor(current);
         //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
     }
+    // sell treasures
     else if(num == 5){
         current = sellTreasures(current);
         //cout << "Thank you for your patronage! What else can I get for you?" <<endl;
     }
+    // check for invalid input
     else if(num <=0 || num > 6){
         cout << "Invalid input." << endl;
         cout << "Enter a new number" << endl;
         cin >> num;
     }
     
+    //stops when num == 6
     }while(num != 6);
+    // return inventory with updates
     return current;
 }
-
+/**
+ * Algorithm: Let's user buy ingredients
+ * 1. Set ingredient price to the price multiplier
+ * 2. Ask user for how much ingredients they want to buy
+ * 3. Sell them ingredients if they can afford it
+ * 4. Return inventory with updated ingredients and cold
+ * Parameters: Current inventory
+ * Return: User's inventory
+ */
 Inventory Merchant::buyIngredients(Inventory current)
 {
+    // set amount to 0
     int amount = 0;
     string answer = "";
+    // set ingredient price to original price * pricemultiplier
     int ingred = 1*priceMultiplier;
 
     cout << "I recommend at least 10 kg of ingredients per person! Ingredients are "<< ingred << " gold per kg.\nHow many kg of ingredients do you need? (Enter a positive mulitple of 5, or 0 to cancel)" <<endl;
+    // take user's input into amount of ingredients they want to buy
     cin >> amount; 
     while(amount*ingred > current.getGold() || amount%5 != 0){
+        // tell user if they can't afford it
         if(amount*ingred > current.getGold()){
             cout << "You do not have enough money to purchase " << amount << " " << " kg of ingredients." << endl;
             cout << "Each kg of ingredients is "<< ingred <<" Gold and you have " << current.getGold() << " gold." << endl;
             cout << "Choose between 1-" << current.getGold()/ingred << " kg of ingredients or enter 0 to cancel."<<endl;
             cin >> amount;
+            // if they don't want anything, break
             if(amount == 0){
                 break;
             }
         }
+        // make sure user is buying ingredients in increments of 5
         else if(amount%5 != 0){
             cout << "You must buy ingredients in increments in 5 kg" <<endl;
             cout << "How many kg of ingredients do you need? (Enter a positive mulitple of 5, or 0 to cancel)" <<endl;
             cin >> amount;
+            // if they don't want anything, break
             if(amount == 0){
                 break;
             }
         }
     }
+    // otherwise, let them buy how much they desired
     if(amount != 0){
         cout << "Are you sure you want to buy " << amount << " kg of ingredients for " << amount*ingred << " Gold? (y/n)" <<endl;
         cin >> answer;
+        // confirm they want to buy amount of ingredients
         if(answer == "y"){
             current.setIngredients(amount);
             current.setGold(current.getGold()-amount*ingred);
