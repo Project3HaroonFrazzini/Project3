@@ -779,7 +779,7 @@ void Party:: createGame()
         StatusUpdate(inv);
         ActionMenu();
         displayPartyMap();
-        if((roomsCleared == 5)&& (getNamesSize() > 1))
+        if((roomsCleared == 5)&& (getNamesSize() < 1))
         {
             gameEnd = true;
         }
