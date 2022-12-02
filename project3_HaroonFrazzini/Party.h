@@ -12,6 +12,7 @@
 #include "Monster.h"
 #include <vector>
 
+using namespace std;
 class Party
 {
     private:
@@ -40,6 +41,8 @@ class Party
     void deathFunc(int);
     bool doorPuzzle();
     void Cook();
+    int getNamesSize();
+    
 
 };
 #endif
