@@ -732,13 +732,13 @@ void Party:: setMap()
     int rooms = 0;
     int NPCs = 0;
 
-    map.setPlayerPosition(getRandomRow(numRows),getRandomCol(numCols));
+    map.setPlayerPosition(0,0);
     bool exit = false;
     do{
         row = getRandomRow(numRows);
         col = getRandomCol(numCols);
 
-        if(!map.isNPCLocation(row,col) && !map.isRoomLocation(row,col) && !map.isDungeonExit(row,col)){
+        if(!map.isNPCLocation(row,col) && !map.isRoomLocation(row,col) && !map.isDungeonExit(row,col) && (numRows == 0 && numCols == 0)){
             map.addRoom(row,col);
             rooms++;
         }
