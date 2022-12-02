@@ -16,7 +16,6 @@
 #include <vector>
 
 using namespace std;
-int split2(string input_string,char separator,string arr[],int arr_size);
 
 Party::Party()
 {
@@ -208,7 +207,10 @@ void Party:: Cook()
         else
         {
             meals = ingredientsUsed/getNamesSize();
-            for(int i = 0; i <fu)
+            for(int i = 0; i < getFullnessValuesSize();i++)
+            {
+                int s;
+            }
         }
     }
 
