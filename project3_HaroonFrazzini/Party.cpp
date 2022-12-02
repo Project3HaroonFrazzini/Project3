@@ -25,6 +25,7 @@ Party::Party()
     Inventory inv = Inventory();
     roomsCleared = 0;
     Map map = Map();
+    Monster monst = Monster();
 }
 int split2(string input_string,char separator,string arr[],int arr_size){
     if(input_string == ""){
@@ -78,6 +79,10 @@ void Party:: removeFullness(int index)
 {
     fullnessValues.erase(fullnessValues.begin()+index);
 }
+void Party:: setAnger()
+{
+    anger++;
+}
 void Party:: deathFunc(int index)
 {
     cout << "Oh no, party member" << getName(index) << " died!!!!" << endl;
@@ -92,6 +97,10 @@ int Party:: getNamesSize()
 int Party:: getFullnessValuesSize()
 {
     return fullnessValues.size();
+}
+void Party:: setRoomsCleared(int amt)
+{
+    roomsCleared += amt;
 }
 Inventory Party:: Misfortunes()
 {
@@ -435,7 +444,6 @@ void Party:: ActionMenu()
     //rand()%100 + 1;
     int choice = 0;
     int randum;
-    Monster monst(roomsCleared);
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false)
     {
         do
@@ -540,6 +548,7 @@ void Party:: ActionMenu()
                             setFullness(getFullness(i) - 1,i);
                         }
                     }
+                    setAnger();
                     break;
                 }
                 else
@@ -586,6 +595,7 @@ void Party:: ActionMenu()
                             setFullness(getFullness(i) - 1,i);
                         }
                     }
+                    setAnger();
                     break;
                 }
                 else
@@ -597,9 +607,69 @@ void Party:: ActionMenu()
             case 2:
                 if(inv.getKeys() > 0)
                 {
-                    if(roomsCleared < 5)
+                    int goldNumTemp = inv.getGold();
+                    monst.setRating(monst.getRating()+1);
+                    inv = monst.battle(inv);
+                    if(inv.getGold() > goldNumTemp)
                     {
-                        monst.battle(inv)
+                        randum = rand()%100 + 1;
+                        if(randum <= 60)
+                        {
+                            Misfortunes();
+                        }
+                        setRoomsCleared(getroomsCleared()+1);
+                        setAnger();
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    else
+                    {
+                        randum = rand()%100 + 1;
+                        if(randum <= 40)
+                        {
+                            Misfortunes();
+                        }
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    //battle the source
+                }
+                else
+                {
+                    if(doorPuzzle() == true)
+                    {
+                        int goldNumTemp = inv.getGold();
+                    monst.setRating(monst.getRating()+1);
+                    inv = monst.battle(inv);
+                    if(inv.getGold() > goldNumTemp)
+                    {
+                        randum = rand()%100 + 1;
+                        if(randum <= 60)
+                        {
+                            Misfortunes();
+                        }
+                        setRoomsCleared(getroomsCleared()+1);
+                        setAnger();
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    else
+                    {
+                        randum = rand()%100 + 1;
+                        if(randum <= 40)
+                        {
+                            Misfortunes();
+                        }
+                        inv.setKeys(inv.getKeys()-1);
+                    }
+                    }
+                    else
+                    {
+                        randum = rand()%4 + 1;
+                        for(int i = 1; i < 4; i++)
+                        {
+                            if(i == randum)
+                            {
+                                deathFunc(i);
+                            }
+                        }
                     }
                 }
             case 3:                   

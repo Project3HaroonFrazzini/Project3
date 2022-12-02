@@ -23,6 +23,7 @@ class Party
     Merchant merch;
     Map map;
     int roomsCleared;
+    Monster monst;
 
     public:
     int getFullness(int);
@@ -32,6 +33,8 @@ class Party
     void ActionMenu();
     int getroomsCleared();
     int getAnger();
+    void setRoomsCleared(int);
+    void setAnger();
     Party();
     void MainMenu();
     int setFullness(int, int);
