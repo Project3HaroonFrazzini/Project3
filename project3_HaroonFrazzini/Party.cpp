@@ -770,6 +770,7 @@ void Party:: createGame()
         cin >> inputStr;
         setName(i,inputStr);
     }
+    merch.menu(inv);
     while(gameEnd != true)
     {
         StatusUpdate(inv);
