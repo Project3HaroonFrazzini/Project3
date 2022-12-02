@@ -47,6 +47,9 @@ class Party
     int getNamesSize();
     int getFullnessValuesSize();
     bool NPCPuzzle();
+    Map setMap(Map);
+    int getRandomRow(int);
+    int getRandomCOlumn(int);
 
 };
 #endif
