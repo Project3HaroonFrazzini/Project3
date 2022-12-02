@@ -217,29 +217,81 @@ void Party:: Cook()
     }
     if(choice == 'P')
     {
-        randum = rand()%100 + 1;
-        if(randum <= 25)
+        if(inv.getCookware(0) == 0)
         {
-            inv.setIngredients(inv.getIngredients()-ingredientsUsed);
-            inv.setCookware(inv.getCookware(0) - 1, 0);
+            cout << "You do not have any pots!" << endl;
         }
-        else
-        {
-            meals = ingredientsUsed/getNamesSize();
-            for(int i = 0; i < getFullnessValuesSize();i++)
+        else{
+            randum = rand()%100 + 1;
+            if(randum <= 25)
             {
-                int s;
+                inv.setIngredients(inv.getIngredients()-ingredientsUsed);
+                inv.setCookware(inv.getCookware(0) - 1, 0);
+                cout << "Your pot broke!" << endl;
+            }
+            else
+            {
+                meals = ingredientsUsed/getNamesSize();
+                for(int i = 0; i < getFullnessValuesSize();i++)
+                {
+                    setFullness(getFullness(i) + meals, i);
+                }
+                cout << "Cook was successfull Mr. White" << endl;
+                inv.setIngredients(inv.getIngredients()-ingredientsUsed);
             }
         }
     }
-
     else if(choice == 'F')
     {
-
+        if(inv.getCookware(1) == 0)
+        {
+            cout << "You do not have any pans!" << endl;
+        }
+        else
+        {
+            randum = rand()%100 + 1;
+            if(randum <= 10)
+            {
+                inv.setIngredients(inv.getIngredients()-ingredientsUsed);
+                inv.setCookware(inv.getCookware(1) - 1, 0);
+                cout << "Your pan broke!" << endl;
+            }
+            else
+            {
+                meals = ingredientsUsed/getNamesSize();
+                for(int i = 0; i < getFullnessValuesSize();i++)
+                {
+                    setFullness(getFullness(i) + meals, i);
+                }
+                cout << "Cook was successfull Mr. White" << endl;
+            }
+        }
     }
     else
     {
-
+        if(inv.getCookware(2) == 0)
+        {
+            cout << "You do not have any cauldrons!" << endl;
+        }
+        else
+        {
+            randum = rand()%100 + 1;
+            if(randum <= 2)
+            {
+                inv.setIngredients(inv.getIngredients()-ingredientsUsed);
+                inv.setCookware(inv.getCookware(2) - 1, 0);
+                cout << "Your cauldron broke!" << endl;
+            }
+            else
+            {
+                meals = ingredientsUsed/getNamesSize();
+                for(int i = 0; i < getFullnessValuesSize();i++)
+                {
+                    setFullness(getFullness(i) + meals, i);
+                }
+                cout << "Cook was successfull Mr. White" << endl;
+            }
+        }
     }
 }
 void Party:: StatusUpdate(Inventory inv)
@@ -291,7 +343,7 @@ void Party:: ActionMenu()
                         // player finds a key
                         if(randum <= 10)
                         {
-                            cout << "You found a key cuh!" << endl;
+                            cout << "You found a key!" << endl;
                             inv.setKeys(inv.getKeys()+1);
                         }
                         // player finds a treasure
@@ -323,6 +375,7 @@ void Party:: ActionMenu()
                     }
                     break;
                 case 4:
+                    Cook();
                     break;
                 default:
                     while((choice < 0))
