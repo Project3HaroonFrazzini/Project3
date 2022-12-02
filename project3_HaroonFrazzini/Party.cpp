@@ -551,6 +551,7 @@ void Party:: ActionMenu()
                 case 2:
                     if(NPCPuzzle() == true)
                     {
+                        merch.setPrice(roomsCleared);
                         merch.menu(inv);
                     }
                     else
@@ -563,6 +564,46 @@ void Party:: ActionMenu()
                 case 3:
                     cout << "sorry that u lost!!" << endl;
 
+        }
+    }
+    else
+    {   
+        cout << "This is a room space!" << endl;
+        cout << "Choose an option\n1. Move\n2. Open the door\n3. Give Up" << endl;
+        cin >> choice;
+        switch(choice)
+        {
+            case 1:
+                char direction;
+                cout << " Choose a direction to move" << endl;
+                cin >> direction;
+                if(map.move(direction)){
+                    for(int i = 0; i < 5; i++)
+                    {
+                        int randFullnessChance = rand() % 100 + 1;
+                        if(randFullnessChance <= 20)
+                        {
+                            setFullness(getFullness(i) - 1,i);
+                        }
+                    }
+                    break;
+                }
+                else
+                {
+                    cout << "You can't move in that direction, please try again!" << endl;
+                    break;
+                }
+                break;
+            case 2:
+                if(inv.getKeys() > 0)
+                {
+                    if(roomsCleared < 5)
+                    {
+                        monst.battle(inv)
+                    }
+                }
+            case 3:                   
+                cout << "sorry that u lost!!" << endl;
         }
     }
 }
