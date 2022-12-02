@@ -70,6 +70,10 @@ int Party:: getNamesSize()
 {
     return names.size();
 }
+int Party:: getFullnessValuesSize()
+{
+    return fullnessValues.size();
+}
 Inventory Party:: Misfortunes()
 {
     srand(time(0));
@@ -203,6 +207,7 @@ void Party:: Cook()
         else
         {
             meals = ingredientsUsed/getNamesSize();
+            for(int i = 0; i <fu)
         }
     }
 

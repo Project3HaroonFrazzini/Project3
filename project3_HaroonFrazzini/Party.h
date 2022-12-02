@@ -42,7 +42,7 @@ class Party
     bool doorPuzzle();
     void Cook();
     int getNamesSize();
-    
+    int getFullnessValuesSize();
 
 };
 #endif
