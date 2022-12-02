@@ -320,7 +320,7 @@ void Party:: StatusUpdate(Inventory inv)
     {
         cout << "| " <<getName(i) << " | " << getFullness(i) << endl;
     }
-    cout << "+-------------+";
+    cout << "+-------------+\n";
 }
 
 void Party::sortFunction(){
