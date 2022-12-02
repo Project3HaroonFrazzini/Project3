@@ -16,6 +16,7 @@
 
 using namespace std;
 
+
 Monster::Monster()
 {
     name = "";
@@ -26,7 +27,13 @@ Monster::Monster(int new_rating)
     name = "";
     rating = new_rating;
 }
-// get a random line from the monsters.txt and get that name
+/*
+Get a random named monster from the file that is the right challenge rating as the number of roomes cleared
+Go through all of the lines of the file and check which ones have the correct challenge rating
+If the monster is the right challenge rating then add it to a vector
+Randomly choose one of the monster names out of the vector and return it
+Use this in battle function when getting the name of the monster the player is fighting
+*/
 string Monster::getName()
 {
     ifstream data("monsters.txt");
@@ -47,7 +54,10 @@ string Monster::getName()
     int random = rand() % names.size();
     return names[random];
 }
-// get a random line from the monsters.txt and get that name
+
+/*
+Return the private variable rating that is currently being used
+*/
 int Monster:: getRating()
 {
     srand(time(0));
@@ -55,6 +65,14 @@ int Monster:: getRating()
     
 }
 
+/*
+The main monster class is the battle class that takes an inventory and returns the same ivnentory with changes in the number of items
+Start by getting the name of the monster using the getName function and the private variable for how many rooms have been cleared
+Figure out the the total number of weapons the party has, sicne the party must surrender if they have no weapons
+If the party has weapons then ask them if they want to fight or surrender
+if they want to fight run the attack function, if they win alter the gold and ingredients accordingly
+if they lose call the surrender function as losing is the same as surrendering
+*/
 Inventory Monster::battle(Inventory current){
     int num = 0;
     string name = getName();
@@ -107,6 +125,13 @@ Inventory Monster::battle(Inventory current){
     return current;
 }
 
+/*
+The attack class is the class that uses the attack algorithm given in order to figure out if the party wins the battle or not
+set the w,d,a,c variables according to the items in the inventory that is passed to the function
+create to random numbers between 1 and 6 
+use the equation to figure out if the battle is won ( >0) or lost (<0)
+return true if its won, return false if its lost
+*/
 bool Monster::attack(Inventory current){
     int w = (current.getWeapons(0) + current.getWeapons(1) + current.getWeapons(2) + current.getWeapons(3) + current.getWeapons(5)) + 1*(current.getWeapons(2)) + 2*(current.getWeapons(3)) + 3*(current.getWeapons(5));
     int d = 0;
@@ -134,6 +159,14 @@ bool Monster::attack(Inventory current){
     }
 }
 
+/*
+The surrender function is what happens if the party chooses to surrender or if they lose
+The function takes the current inventory and alters it according to the rules of losing a battle
+This includes losing 25% of your gold, up to 30 ingredients, and possibly dying
+If a player does die alter the lives vector in the inventory so that it can be seen in the party class]
+Use the number of pieces of armor to alter the staticists ( 10% without armor, 5% with) of death
+return the updated inventory
+*/
 Inventory Monster::surrender(Inventory current){
     int random = 0;
     cout << "You lost " << current.getGold() - current.getGold()*.75 << " gold and ";
@@ -166,11 +199,17 @@ Inventory Monster::surrender(Inventory current){
     return current;
 }
 
+/*
+Return the name of the monster
+*/
 string Monster::getMonster(){
     string name = "";
     return name;
 }
 
+/*
+In order to avoid fighting the same monster twice, make sure that the monster 
+*/
 bool Monster::checkNames(string name){
     for(int i = 0; i < used_names.size();i++){
         if(name == used_names[i]){
