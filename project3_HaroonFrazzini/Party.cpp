@@ -316,7 +316,7 @@ void Party:: StatusUpdate(Inventory inv)
     cout << "| Rooms Cleared: " << getroomsCleared() << " | Keys: " << inv.getKeys() << " | Sorcerer Anger\n"  << "+-------------+" << endl;
     inv.printInventory();
     cout << "+------Party------+" << endl;
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i <= 4; i++)
     {
         cout << "| " <<getName(i) << " | " << getFullness(i) << endl;
     }
@@ -523,6 +523,8 @@ void Party:: ActionMenu()
         }
         while(choice != 5);
         cout << "sorry that u lost!!" << endl;
+        gameEnd = true;
+        return;
     }
     else if(map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true)
     {
@@ -568,6 +570,9 @@ void Party:: ActionMenu()
 
                 case 3:
                     cout << "sorry that u lost!!" << endl;
+                    gameEnd = true;
+                    return;
+
             StatusUpdate(inv);
         }
     }
@@ -668,8 +673,10 @@ void Party:: ActionMenu()
                         }
                     }
                 }
-            case 3:                   
+            case 3:    
+                gameEnd = true;               
                 cout << "sorry that u lost!!" << endl;
+                return;
             StatusUpdate(inv);
         }
     }
@@ -732,6 +739,7 @@ void Party:: setMap()
 }
 void Party:: createGame()
 {
+    setMap();
     string inputStr = "";
     cout << "What is the party leader's name?" << endl;
     cin >> inputStr;
@@ -747,6 +755,17 @@ void Party:: createGame()
         StatusUpdate(inv);
         displayPartyMap();
         ActionMenu();
+        if((roomsCleared == 5)&& (getNamesSize() > 1))
+        {
+            gameEnd = true;
+        }
+        if(anger == 100)
+        {
+            gameEnd = true;
+        }
     }
-
+    if(gameEnd == true)
+    {
+        cout << "You won: here are your statistics" << endl;
+    }
 }
