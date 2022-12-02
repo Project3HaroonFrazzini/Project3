@@ -17,10 +17,13 @@ using namespace std;
 
 int main(){
     Inventory test = Inventory();
+    Map m = Map();
     //test.printInventory();
 
     Party par = Party();
     //par.getFullness(0);
-    par.ActionMenu();
+    par.setMap();
+    par.displayPartyMap();
+    
     //par.MainMenu();
 }

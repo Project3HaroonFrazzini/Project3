@@ -687,7 +687,11 @@ int Party::getRandomCol(int num_columns)
     srand(time(0));
     return rand() % num_columns;
 }
-Map Party:: setMap(Map map)
+void Party:: displayPartyMap()
+{
+    map.displayMap();
+}
+void Party:: setMap()
 {
     map.resetMap();
     int num = 0;
@@ -723,6 +727,4 @@ Map Party:: setMap(Map map)
         }
 
     }while(NPCs < 5);
-
-    return map;
 }
