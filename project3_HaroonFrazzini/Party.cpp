@@ -322,7 +322,7 @@ void Party:: ActionMenu()
     {
         do
         {
-            cout << "Choose an option" << endl;
+            cout << "Choose an option\n1. Move\n2. Investigate\n3. Pick a Fight\n4. Cook and Eat\n5. Give up" << endl;
             cin >> choice;
             switch(choice)
             {
