@@ -448,6 +448,7 @@ void Party:: ActionMenu()
     {
         do
         {
+            StatusUpdate(inv);
             cout << "Choose an option\n1. Move\n2. Investigate\n3. Pick a Fight\n4. Cook and Eat\n5. Give up" << endl;
             cin >> choice;
             switch(choice)
@@ -572,10 +573,10 @@ void Party:: ActionMenu()
 
                 case 3:
                     cout << "sorry that u lost!!" << endl;
-
+            StatusUpdate(inv);
         }
     }
-    else
+    else if(map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == true)
     {   
         cout << "This is a room space!" << endl;
         cout << "Choose an option\n1. Move\n2. Open the door\n3. Give Up" << endl;
@@ -674,7 +675,13 @@ void Party:: ActionMenu()
                 }
             case 3:                   
                 cout << "sorry that u lost!!" << endl;
+            StatusUpdate(inv);
         }
+    }
+    else if((getroomsCleared() == 5) && (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true)))
+    {
+        cout << "You won!" << endl;
+        return;
     }
 }
 int Party:: getRandomRow(int num_rows)
@@ -727,4 +734,8 @@ void Party:: setMap()
         }
 
     }while(NPCs < 5);
+}
+void Party:: createGame()
+{
+
 }
