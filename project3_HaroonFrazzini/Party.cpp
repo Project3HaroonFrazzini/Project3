@@ -164,7 +164,7 @@ Inventory Party:: Misfortunes()
             }
         }
     }
-
+    return inv;
 }
 void Party:: Cook()
 {
