@@ -10,14 +10,23 @@
 
 using namespace std;
 
+/*
+Default constructor that sets the priceMultiplier to 1
+*/
 Merchant:: Merchant()
 {
     priceMultiplier = 1;
 }
+/*
+Function that changes the price multiplier of the merchant depending on the number of completed rooms
+*/
 void Merchant::setPrice(int rooms){
     priceMultiplier = 1 + (.25 * rooms);
 }
 
+/*
+
+*/
 Inventory Merchant::menu(Inventory current){
     int num = 0;
     cout << "If you're looking to get supplies, you've come to the right place.\nI would be happy to part with some of my wares...for the proper price!" <<endl;

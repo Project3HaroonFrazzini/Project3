@@ -23,6 +23,10 @@ Inventory::Inventory(){
     treasures = {0,0,0,0,0};
 }
 
+/*
+Print out the current inventory in the format provided, printing the gold, cookware, weapon, armor, and treasure
+Void function since it prints and thats it
+*/
 
 void Inventory::printInventory(){
     string menu = "|-------------|\n|  INVENTORY  |\n|-------------|";
@@ -34,9 +38,17 @@ void Inventory::printInventory(){
     cout << menu << endl << gold_print << endl << cookware_print << endl << weapon << endl << armor_print << endl << treasure << endl;
 }
 
+
+/*
+Getter function that returns the lives vector, not at an index becuase you need to loop through the lives
+*/
 vector<bool> Inventory::getLives(){
     return lives;
 }
+
+/*
+Setter function that y
+*/
 void Inventory::setLives(int index){
     lives[index] = false;
 }
