@@ -16,7 +16,9 @@
 
 using namespace std;
 
-
+/*
+Default constructor that sets the monster rating to 1 and sets the name variable to an empty string
+*/
 Monster::Monster()
 {
     name = "";
@@ -25,7 +27,7 @@ Monster::Monster()
 Monster::Monster(int new_rating)
 {
     name = "";
-    rating = new_rating;
+    rating = new_rating+1;
 }
 /*
 Get a random named monster from the file that is the right challenge rating as the number of roomes cleared
