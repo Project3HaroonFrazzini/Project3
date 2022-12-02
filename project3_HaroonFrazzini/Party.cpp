@@ -950,7 +950,7 @@ void Party:: createGame()
         string myText;
         cout << "Here are your statistics" << endl;
         ofstream Results("Results.txt");
-        Results << "leader: " <<names[0] << endl;
+        Results << "leader: " <<names[0] << "\n"<< endl;
         Results << "Rooms cleared: " << roomsCleared << endl;
         Results << "Gold: " << inv.getGold() << endl;
         Results << "Treasures: " << inv.getTreasures(0) << inv.getTreasures(1) << inv.getTreasures(2) <<  endl;
