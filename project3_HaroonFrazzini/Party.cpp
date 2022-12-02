@@ -774,8 +774,8 @@ void Party:: createGame()
     while(gameEnd != true)
     {
         StatusUpdate(inv);
-        displayPartyMap();
         ActionMenu();
+        displayPartyMap();
         if((roomsCleared == 5)&& (getNamesSize() > 1))
         {
             gameEnd = true;
