@@ -311,6 +311,124 @@ void Party:: StatusUpdate(Inventory inv)
     }
     cout << "+-------------+";
 }
+void Party:: MainMenu()
+{
+    StatusUpdate(inv);
+    map.displayMap();
+    ActionMenu();
+}
+
+bool Party::doorPuzzle(){
+    int strikes = 0;
+    bool answered = false;
+    string answer = "";
+
+    srand(time(0));
+    do{
+    int door = rand() % 3 + 1; // 1 = Boulder, 2 = Parchment, 3 = Shears
+    cout << "Choose one of the following: (B) Boulder, (P) Parchment, (S) Shears." <<endl;
+    cin >> answer;
+    if(answer == "B"){
+        //answered = true;
+        if(door == 1){
+            cout << "I choose Boulder!" <<endl;
+            cout << "Uh oh, we tied! Let's play again." <<endl;
+        }
+        else if(door == 2){
+            cout << "I choose Parchment!" << endl;
+            cout << "HaHa I win! Thats one strike for you" <<endl;
+            strikes++;
+            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
+        }
+        else if (door == 3){
+            cout << "I choose Shears!" <<endl;
+            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
+            answered = true;
+            break;
+        }
+    }
+    else if(answer == "P"){
+        if(door == 1){
+            cout << "I choose Boulder!" <<endl;
+            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
+            answered = true;
+            break;
+        }
+        else if(door == 2){
+            cout << "I choose Parchment!" << endl;
+            cout << "Uh oh, we tied! Let's play again." <<endl;
+        }
+        else if (door == 3){
+            cout << "I choose Shears!" <<endl;
+            cout << "HaHa I win! Thats one strike for you" <<endl;
+            strikes++;
+            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
+        }
+    }
+    else if(answer == "S"){
+        if(door == 1){
+            cout << "I choose Boulder!" <<endl;
+            cout << "HaHa I win! Thats one strike for you" <<endl;
+            strikes++;
+            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
+        }
+        else if(door == 2){
+            cout << "I choose Parchment!" << endl;
+            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
+            answered = true;
+            break;
+        }
+        else if (door == 3){
+            cout << "I choose Shears!" <<endl;
+            cout << "Uh oh, we tied! Let's play again." <<endl;
+        }
+    }
+    else{
+        cout << "Invalid Input." <<endl;
+    }
+    }while(!answered || strikes != 3);
+
+    if(strikes == 3){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+bool Party::NPCPuzzle()
+{
+    ifstream data("riddles.txt");
+    string lines[2];
+    string line = "";
+    string answer = "";
+    bool result  = false;
+
+    srand(time(0));
+    int random = rand() % 20;
+    int i = 0;
+    while(!data.eof()){
+        getline(data,line);
+        split2(line,'~',lines,2);
+        if(i == random){
+            cout << lines[0] <<endl;
+            cin >> answer;
+            if(answer == lines[1]){
+                result = true;
+                break;
+            }
+        }
+        i++;
+    }
+    if(result){
+        cout << "You got it right! You are a genius. Well I stand by my word, here are my prices:" <<endl;
+        return true;
+    }
+    else{
+        cout << "Nope that isn't quite correct. I was worried you were going to get it there for a second. Goodbye!" <<endl;
+        return false;
+    }
+}
 void Party:: ActionMenu()
 {
     srand(time(0));
@@ -404,128 +522,47 @@ void Party:: ActionMenu()
     }
     else if(map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == true)
     {
-        do
+        cout << "This is an NPC Space!" << endl;
+        cout << "Choose an option\n1. Move\n2. Speak to an NPC\n3. Give Up" << endl;
+        cin >> choice;
+        switch(choice)
         {
-
-        }
-        while( 1 != 1);
-    }
-}
-void Party:: MainMenu()
-{
-    StatusUpdate(inv);
-    map.displayMap();
-    ActionMenu();
-}
-
-bool Party::doorPuzzle(){
-    int strikes = 0;
-    bool answered = false;
-    string answer = "";
-
-    srand(time(0));
-    do{
-    int door = rand() % 3 + 1; // 1 = Boulder, 2 = Parchment, 3 = Shears
-    cout << "Choose one of the following: (B) Boulder, (P) Parchment, (S) Shears." <<endl;
-    cin >> answer;
-    if(answer == "B"){
-        //answered = true;
-        if(door == 1){
-            cout << "I choose Boulder!" <<endl;
-            cout << "Uh oh, we tied! Let's play again." <<endl;
-        }
-        else if(door == 2){
-            cout << "I choose Parchment!" << endl;
-            cout << "HaHa I win! Thats one strike for you" <<endl;
-            strikes++;
-            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
-        }
-        else if (door == 3){
-            cout << "I choose Shears!" <<endl;
-            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
-            answered = true;
-            break;
-        }
-    }
-    else if(answer == "P"){
-        if(door == 1){
-            cout << "I choose Boulder!" <<endl;
-            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
-            answered = true;
-            break;
-        }
-        else if(door == 2){
-            cout << "I choose Parchment!" << endl;
-            cout << "Uh oh, we tied! Let's play again." <<endl;
-        }
-        else if (door == 3){
-            cout << "I choose Shears!" <<endl;
-            cout << "HaHa I win! Thats one strike for you" <<endl;
-            strikes++;
-            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
-        }
-    }
-    else if(answer == "S"){
-        if(door == 1){
-            cout << "I choose Boulder!" <<endl;
-            cout << "HaHa I win! Thats one strike for you" <<endl;
-            strikes++;
-            cout << "You have " << strikes << " strikes, if you get to 3 strikes you DIE!" <<endl;
-        }
-        else if(door == 2){
-            cout << "I choose Parchment!" << endl;
-            cout << "Nooo you won! Rules are rules, you may now enter this room." <<endl; 
-            answered = true;
-            break;
-        }
-        else if (door == 3){
-            cout << "I choose Shears!" <<endl;
-            cout << "Uh oh, we tied! Let's play again." <<endl;
-        }
-    }
-    else{
-        cout << "Invalid Input." <<endl;
-    }
-    }while(!answered || strikes != 3);
-
-    if(strikes == 3){
-        return false;
-    }
-    else{
-        return true;
-    }
-}
-
-bool NPCPuzzle()
-{
-    ifstream data("riddles.txt");
-    string lines[2];
-    string line = "";
-    string answer = "";
-    bool result  = false;
-
-    srand(time(0));
-    int random = rand() % 20;
-    int i = 0;
-    while(!data.eof()){
-        getline(data,line);
-        split2(line,'~',lines,2);
-        if(i == random){
-            cout << lines[0] <<endl;
-            cin >> answer;
-            if(answer == lines[1]){
-                result = true;
+            case 1:
+                char direction;
+                cout << " Choose a direction to move" << endl;
+                cin >> direction;
+                if(map.move(direction)){
+                    for(int i = 0; i < 5; i++)
+                    {
+                        int randFullnessChance = rand() % 100 + 1;
+                        if(randFullnessChance <= 20)
+                        {
+                            setFullness(getFullness(i) - 1,i);
+                        }
+                    }
+                    break;
+                }
+                else
+                {
+                    cout << "You can't move in that direction, please try again!" << endl;
+                    break;
+                }
                 break;
-            }
+                case 2:
+                    if(NPCPuzzle() == true)
+                    {
+                        merch.menu(inv);
+                    }
+                    else
+                    {
+                        monst.battle(inv);
+                    }
+                    map.exploreSpace(map.getPlayerRow(),map.getPlayerCol());
+                    map.removeNPC(map.getPlayerRow(),map.getPlayerCol());
+
+                case 3:
+                    cout << "sorry that u lost!!" << endl;
+
         }
-        i++;
-    }
-    if(result){
-        cout << "You got it right! You are a genius. Well I stand by my word, here are my prices:" <<endl;
-        return true;
-    }
-    else{
-        cout << "Nope that isn't quite correct. I was worried you were going to get it there for a second. Goodbye!" <<endl;
-        return false;
     }
 }
