@@ -794,7 +794,7 @@ void Party:: createGame()
     if(gameEnd == true)
     {
         string myText;
-        cout << "Here are your statistics" << endl;
+        cout << "Here are your statistics" << endl;   
         ofstream Results("Results.txt");
         Results << "leader: " <<names[0] << endl;
         Results << "Rooms cleared: " << roomsCleared << endl;
