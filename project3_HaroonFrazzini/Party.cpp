@@ -321,6 +321,7 @@ void Party:: StatusUpdate(Inventory inv)
         cout << "| " <<getName(i) << " | " << getFullness(i) << endl;
     }
     cout << "+-------------+\n";
+    displayPartyMap();
 }
 
 void Party::sortFunction(){
@@ -472,7 +473,7 @@ void Party:: ActionMenu()
                     char direction;
                     cout << " Choose a direction to move" << endl;
                     cin >> direction;
-                    if(map.move(direction)){
+                    if(map.move(direction) == true){
                         for(int i = 0; i < 5; i++)
                         {
                             int randFullnessChance = rand() % 100 + 1;
@@ -490,7 +491,7 @@ void Party:: ActionMenu()
                     }
                     break;
                 case 2:
-                    if(!(map.isExplored(map.getPlayerRow(),map.getPlayerCol())))
+                    if(map.isExplored(map.getPlayerRow(),map.getPlayerCol()) == false)
                     {
                         map.exploreSpace(map.getPlayerRow(),map.getPlayerCol());
                         randum = rand()%100 + 1;
@@ -557,7 +558,7 @@ void Party:: ActionMenu()
                 char direction;
                 cout << " Choose a direction to move" << endl;
                 cin >> direction;
-                if(map.move(direction)){
+                if(map.move(direction) == true){
                     for(int i = 0; i < 5; i++)
                     {
                         int randFullnessChance = rand() % 100 + 1;
@@ -607,7 +608,7 @@ void Party:: ActionMenu()
                 char direction;
                 cout << " Choose a direction to move" << endl;
                 cin >> direction;
-                if(map.move(direction)){
+                if(map.move(direction) == true){
                     for(int i = 0; i < 5; i++)
                     {
                         int randFullnessChance = rand() % 100 + 1;
@@ -770,7 +771,7 @@ void Party:: createGame()
         cin >> inputStr;
         setName(i,inputStr);
     }
-    merch.menu(inv);
+    inv = merch.menu(inv);
     while(gameEnd != true)
     {
         StatusUpdate(inv);
