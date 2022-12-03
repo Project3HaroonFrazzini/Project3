@@ -330,8 +330,8 @@ void Party::sortFunction(){
     int temp_hung = 0;
     string temp_player = "";
 
-    for(int i = 0; i < fullnessValues.size(); i ++){
-        for(int j = 0; j < fullnessValues.size(); j++){
+    for(int i = 1; i < fullnessValues.size(); i ++){
+        for(int j = 1; j < fullnessValues.size(); j++){
             if(fullnessValues[i] > fullnessValues[j]){
                 temp_hung = fullnessValues[i];
                 fullnessValues[i] = fullnessValues[j];
