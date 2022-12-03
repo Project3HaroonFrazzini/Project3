@@ -90,7 +90,7 @@ void Party:: setAnger()
 }
 void Party:: deathFunc(int index)
 {
-    cout << "Oh no, party member" << getName(index) << " died!!!!" << endl;
+    cout << "Oh no, party member " << getName(index) << " 's bitch ass died!!!!" << endl;
     removeName(index);
     removeFullness(index);
     inv.removeLives(index);
@@ -328,7 +328,7 @@ void Party:: Cook()
 void Party:: StatusUpdate(Inventory inv)
 {
     cout << "+-------------+\n|      STATUS      |\n+-------------+\n";
-    cout << "| Rooms Cleared: " << getroomsCleared() << " | Keys: " << inv.getKeys() << " | Sorcerer Anger\n"  << "+-------------+" << endl;
+    cout << "| Rooms Cleared: " << getroomsCleared() << " | Keys: " << inv.getKeys() << " | Sorcerer Anger: "  << anger << "\n+-------------+" << endl;
     inv.printInventory();
     cout << "+------Party------+" << endl;
     for(int i = 0; i <= 4; i++)
@@ -812,6 +812,7 @@ void Party:: ActionMenu()
                         setRoomsCleared(getroomsCleared()+1);
                         setAnger();
                         inv.setKeys(inv.getKeys()-1);
+                        map.removeRoom(map.getPlayerRow(),map.getPlayerCol());
                     }
                     else
                     {
@@ -821,6 +822,7 @@ void Party:: ActionMenu()
                             Misfortunes();
                         }
                         inv.setKeys(inv.getKeys()-1);
+                        
                     }
                     //battle the source
                 }
@@ -841,6 +843,7 @@ void Party:: ActionMenu()
                         setRoomsCleared(getroomsCleared()+1);
                         setAnger();
                         inv.setKeys(inv.getKeys()-1);
+                        map.removeRoom(map.getPlayerRow(),map.getPlayerCol());
                     }
                     else
                     {
