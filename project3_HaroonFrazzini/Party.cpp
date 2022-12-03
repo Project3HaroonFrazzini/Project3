@@ -697,6 +697,11 @@ void Party:: ActionMenu()
                     break;
                 case 3:
                     //cout << "here" << endl;
+                    if(roomsCleared == 5)
+                    {
+                        cout << "There are no monsters to fight! Your goal now is to escape!" << endl;
+                        break;
+                    }
                     inv = monst.battle(inv);
                     //for(int i = 0; i < inv.getLives().size(); i++)
                     //{
