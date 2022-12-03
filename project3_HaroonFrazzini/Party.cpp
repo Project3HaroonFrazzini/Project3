@@ -663,7 +663,7 @@ void Party:: ActionMenu()
                         else if(randum <= 20)
                         {
                             cout << "You found a treasure" << endl;
-                            inv.setTreasures()
+                            inv.setTreasures(inv.getTreasures(roomsCleared) + 1, roomsCleared);
                         }
                         // player fights a random monster
                         else if(randum <= 40)
