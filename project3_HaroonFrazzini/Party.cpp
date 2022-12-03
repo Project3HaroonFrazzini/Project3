@@ -222,7 +222,7 @@ void Party:: Cook()
     }
     cout << "What cookware do you want to use?\n | 1. Ceramic Pot (P)\n | 2. Frying Pan (F)\n | 3. Cauldron (C)" << endl;
     cin >> choice;
-    while(choice != 'P' || choice != 'F' || choice != 'C')
+    while(choice != 'P' && choice != 'F' && choice != 'C')
     {
         cout << "Invalid input" << endl;
         cout << "What cookware do you want to use?\n | 1. Ceramic Pot (P)\n | 2. Frying Pan (F)\n | 3. Cauldron (C)" << endl;
@@ -663,7 +663,7 @@ void Party:: ActionMenu()
                         else if(randum <= 20)
                         {
                             cout << "You found a treasure" << endl;
-                            merch.setPrice(roomsCleared);
+                            inv.setTreasures()
                         }
                         // player fights a random monster
                         else if(randum <= 40)
@@ -934,6 +934,7 @@ void Party:: createGame()
     inv = merch.menu(inv);
     while(gameEnd != true)
     {
+        //delay();
         StatusUpdate(inv);
         ActionMenu();
         displayPartyMap();
