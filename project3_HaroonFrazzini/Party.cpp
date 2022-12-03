@@ -477,6 +477,12 @@ void Party:: ActionMenu()
     int randum;
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && (map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false))
     {
+        if((getroomsCleared() == 5) && (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true)))
+        {
+            cout << "You won!" << endl;
+            gameEnd == true;
+            return;
+        }
         do
         {
             StatusUpdate(inv);
@@ -877,6 +883,7 @@ void Party:: ActionMenu()
     if((getroomsCleared() == 5) && (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true)))
     {
         cout << "You won!" << endl;
+        gameEnd == true;
         return;
     }
 }
