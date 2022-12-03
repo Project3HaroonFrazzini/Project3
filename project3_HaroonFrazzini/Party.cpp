@@ -471,7 +471,6 @@ bool Party::NPCPuzzle()
 }
 void Party:: ActionMenu()
 {
-    cout << "player row and columns" << map.getPlayerRow() << map.getPlayerCol();
     srand(time(0));
     //rand()%100 + 1;
     int choice = 0;
