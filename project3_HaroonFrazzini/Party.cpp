@@ -90,7 +90,7 @@ void Party:: setAnger()
 }
 void Party:: deathFunc(int index)
 {
-    cout << "Oh no, party member " << getName(index) << " 's bitch ass died!!!!" << endl;
+    cout << "Oh no, party member " << getName(index) << " died!!!!" << endl;
     removeName(index);
     removeFullness(index);
     inv.removeLives(index);
@@ -589,6 +589,7 @@ void Party:: ActionMenu()
                                         {
                                             Misfortunes();
                                         }
+                                        map.removeRoom(map.getPlayerRow(),map.getPlayerCol());
                                         setRoomsCleared(getroomsCleared()+1);
                                         setAnger();
                                         inv.setKeys(inv.getKeys()-1);
