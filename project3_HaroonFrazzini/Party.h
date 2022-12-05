@@ -53,6 +53,7 @@ class Party
     void displayPartyMap();
     void createGame();
     void sortFunction();
+    void checkSpace();
 
 };
 #endif

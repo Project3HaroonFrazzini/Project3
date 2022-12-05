@@ -83,6 +83,7 @@ if they want to fight run the attack function, if they win alter the gold and in
 if they lose call the surrender function as losing is the same as surrendering
 */
 Inventory Monster::battle(Inventory current){
+
     int num = 0;
     string name = getName();
     
