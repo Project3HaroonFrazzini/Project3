@@ -484,6 +484,7 @@ void Party:: ActionMenu()
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && (map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false))
     {
         if(checkExit()){
+            cout << "BLAH" << endl;
             gameEnd = true;
             return;
         }
@@ -509,6 +510,12 @@ void Party:: ActionMenu()
                             }
                         }
                         checkSpace();
+                        if(checkExit() == true)
+                        {
+                            gameEnd = true;
+                            return;
+                        }
+                        checkExit();
                         //sleep(2);
                         break;
                     }
@@ -860,7 +867,7 @@ void Party::checkSpace(){
 
 
 bool Party::checkExit(){
-    if((getroomsCleared() == 1) && map.getPlayerRow() == 12 && map.getPlayerCol() == 6){
+    if((getroomsCleared() == 1) && map.getPlayerRow() == map.getDungeonExitRow() && map.getPlayerCol() == map.getDungeonExitCol()){
     cout << "You won!" << endl;
         gameEnd = true;
         return true;;
