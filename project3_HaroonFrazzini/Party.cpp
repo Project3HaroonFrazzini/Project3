@@ -483,10 +483,14 @@ void Party:: ActionMenu()
     int randum;
     if((map.isNPCLocation(map.getPlayerRow(),map.getPlayerCol()) == false) && (map.isRoomLocation(map.getPlayerRow(),map.getPlayerCol()) == false))
     {
+        if(checkExit()){
+            gameEnd = true;
+            return;
+        }
         do
         {
             StatusUpdate(inv);
-            sleep(2);
+            //sleep(2);
             cout << "Choose an option\n1. Move\n2. Investigate\n3. Pick a Fight\n4. Cook and Eat\n5. Give up" << endl;
             cin >> choice;
             switch(choice)
@@ -505,13 +509,13 @@ void Party:: ActionMenu()
                             }
                         }
                         checkSpace();
-                        sleep(2);
+                        //sleep(2);
                         break;
                     }
                     else
                     {
                         cout << "You can't move in that direction, please try again!" << endl;
-                        sleep(2);
+                        //sleep(2);
                         break;
                     }
                     break;
@@ -650,14 +654,14 @@ void Party:: createGame()
         if(checkExit()){
             break;
         }
-        sleep(2);
+        //sleep(2);
         delay(5);
         StatusUpdate(inv);
-        sleep(2);
+        //sleep(2);
         ActionMenu();
-        sleep(2);
+        //sleep(2);
         displayPartyMap();
-        sleep(2);
+        //sleep(2);
         if((roomsCleared == 5)&& (getNamesSize() >= 1))
         {
             gameEnd = true;
@@ -856,7 +860,7 @@ void Party::checkSpace(){
 
 
 bool Party::checkExit(){
-    if((getroomsCleared() == 5) && (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true))){
+    if((getroomsCleared() == 1) && map.getPlayerRow() == 12 && map.getPlayerCol() == 6){
     cout << "You won!" << endl;
         gameEnd = true;
         return true;;
