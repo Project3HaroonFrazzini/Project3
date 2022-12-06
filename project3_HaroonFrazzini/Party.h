@@ -54,6 +54,7 @@ class Party
     void createGame();
     void sortFunction();
     void checkSpace();
+    bool checkExit();
 
 };
 #endif

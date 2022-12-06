@@ -365,6 +365,9 @@ bool Party::doorPuzzle(){
 
     srand(time(0));
     do{
+    if(strikes == 3){
+        break;
+    }
     int door = rand() % 3 + 1; // 1 = Boulder, 2 = Parchment, 3 = Shears
     cout << "Choose one of the following: (B) Boulder, (P) Parchment, (S) Shears." <<endl;
     cin >> answer;
@@ -426,7 +429,7 @@ bool Party::doorPuzzle(){
     else{
         cout << "Invalid Input." <<endl;
     }
-    }while(!answered || strikes != 3);
+    }while(!answered || strikes < 3);
 
     if(strikes == 3){
         return false;
@@ -638,6 +641,10 @@ void Party:: createGame()
     inv = merch.menu(inv);
     while(gameEnd != true)
     {
+        if(checkExit()){
+            break;
+        }
+        
         delay(5);
         StatusUpdate(inv);
         ActionMenu();
@@ -793,9 +800,9 @@ void Party::checkSpace(){
                         {
                             Misfortunes();
                         }
+                        map.removeRoom(map.getPlayerRow(),map.getPlayerCol());
                         setRoomsCleared(getroomsCleared()+1);
                         setAnger();
-                        inv.setKeys(inv.getKeys()-1);
                     }
                     else
                     {
@@ -804,7 +811,6 @@ void Party::checkSpace(){
                         {
                             Misfortunes();
                         }
-                        inv.setKeys(inv.getKeys()-1);
                     }
                     }
                     else
@@ -828,9 +834,18 @@ void Party::checkSpace(){
         }
     }
     cout << "Rooms: " << getroomsCleared() <<endl;
+    cout << "Row: " << map.getDungeonExitRow() << " Col: " << map.getDungeonExitCol() << endl;
+    cout << "Player Row: " << map.getPlayerRow() << " Player Col: " << map.getPlayerCol() << endl;
+    cout << (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true)) <<endl;
+
+}
+
+
+bool Party::checkExit(){
     if((getroomsCleared() == 5) && (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true))){
-        cout << "You won!" << endl;
+    cout << "You won!" << endl;
         gameEnd = true;
-        return;
+        return true;;
     }
+    return false;
 }

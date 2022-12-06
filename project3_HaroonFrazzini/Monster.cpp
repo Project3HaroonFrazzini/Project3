@@ -205,7 +205,7 @@ Inventory Monster::surrender(Inventory current){
             }
         }
     }
-
+    rating -= 1;
     return current;
 }
 
