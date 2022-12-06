@@ -491,7 +491,7 @@ void Party:: ActionMenu()
         do
         {
             StatusUpdate(inv);
-            //sleep(2);
+            sleep(1);
             cout << "Choose an option\n1. Move\n2. Investigate\n3. Pick a Fight\n4. Cook and Eat\n5. Give up" << endl;
             cin >> choice;
             switch(choice)
@@ -516,13 +516,13 @@ void Party:: ActionMenu()
                             return;
                         }
                         checkExit();
-                        //sleep(2);
+                        sleep(1);
                         break;
                     }
                     else
                     {
                         cout << "You can't move in that direction, please try again!" << endl;
-                        //sleep(2);
+                        sleep(1);
                         break;
                     }
                     break;
@@ -644,6 +644,7 @@ void Party:: setMap()
 }
 void Party:: createGame()
 {
+    cout << "Welcome to Dungeon Escape! The object of this game is to clear 5 rooms and beat the sorcerer with your companions or else you lose!" << endl;
     setMap();
     string inputStr = "";
     cout << "What is the party leader's name?" << endl;
@@ -661,14 +662,14 @@ void Party:: createGame()
         if(checkExit()){
             break;
         }
-        //sleep(2);
-        delay(5);
+        sleep(1);
+        //delay(5);
         StatusUpdate(inv);
-        //sleep(2);
+        sleep(1);
         ActionMenu();
-        //sleep(2);
+        sleep(1);
         displayPartyMap();
-        //sleep(2);
+        sleep(1);
         if((roomsCleared == 5)&& (getNamesSize() >= 1))
         {
             gameEnd = true;
@@ -858,16 +859,12 @@ void Party::checkSpace(){
             StatusUpdate(inv);
         }
     }
-    cout << "Rooms: " << getroomsCleared() <<endl;
-    cout << "Row: " << map.getDungeonExitRow() << " Col: " << map.getDungeonExitCol() << endl;
-    cout << "Player Row: " << map.getPlayerRow() << " Player Col: " << map.getPlayerCol() << endl;
-    cout << (map.isDungeonExit(map.getPlayerRow(),map.getPlayerCol() == true)) <<endl;
 
 }
 
 
 bool Party::checkExit(){
-    if((getroomsCleared() == 1) && map.getPlayerRow() == map.getDungeonExitRow() && map.getPlayerCol() == map.getDungeonExitCol()){
+    if((getroomsCleared() == 5) && map.getPlayerRow() == map.getDungeonExitRow() && map.getPlayerCol() == map.getDungeonExitCol()){
     cout << "You won!" << endl;
         gameEnd = true;
         return true;;
