@@ -15,8 +15,11 @@
 #include <time.h>   
 #include <vector>
 #include <stdio.h>
+#include <unistd.h>
 
 using namespace std;
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono; // nanoseconds, system_clock, seconds
 
 Party::Party()
 {
@@ -483,6 +486,7 @@ void Party:: ActionMenu()
         do
         {
             StatusUpdate(inv);
+            sleep(2);
             cout << "Choose an option\n1. Move\n2. Investigate\n3. Pick a Fight\n4. Cook and Eat\n5. Give up" << endl;
             cin >> choice;
             switch(choice)
@@ -501,11 +505,13 @@ void Party:: ActionMenu()
                             }
                         }
                         checkSpace();
+                        sleep(2);
                         break;
                     }
                     else
                     {
                         cout << "You can't move in that direction, please try again!" << endl;
+                        sleep(2);
                         break;
                     }
                     break;
@@ -567,7 +573,7 @@ void Party:: ActionMenu()
             }
         }
         while(choice != 5);
-        cout << "sorry that u lost!! 3" << endl;
+        cout << "It is unfortunate that you have lost!" << endl;
         gameEnd = true;
         return;
     }
@@ -644,11 +650,14 @@ void Party:: createGame()
         if(checkExit()){
             break;
         }
-        
+        sleep(2);
         delay(5);
         StatusUpdate(inv);
+        sleep(2);
         ActionMenu();
+        sleep(2);
         displayPartyMap();
+        sleep(2);
         if((roomsCleared == 5)&& (getNamesSize() >= 1))
         {
             gameEnd = true;
@@ -664,6 +673,11 @@ void Party:: createGame()
         cout << "Here are your statistics" << endl;
         ofstream Results("Results.txt");
         Results << "leader: " <<names[0] << "\n"<< endl;
+        Results << "Companions: ";
+        for(int i = 1; i < names.size();i++)
+        {
+            Results << names[i] << " | ";
+        }
         Results << "Rooms cleared: " << roomsCleared << endl;
         Results << "Gold: " << inv.getGold() << endl;
         Results << "Treasures: " << inv.getTreasures(0) << inv.getTreasures(1) << inv.getTreasures(2) <<  endl;
@@ -723,7 +737,7 @@ void Party::checkSpace(){
 
                 case 3:
                     gameEnd = true;
-                    cout << "sorry that u lost!! 1" << endl;
+                    cout << "It is unfortunate that you have lost!" << endl;
                     return;
 
             StatusUpdate(inv);
@@ -828,7 +842,7 @@ void Party::checkSpace(){
             break;
             case 3:    
                 gameEnd = true;               
-                cout << "sorry that u lost!! 2" << endl;
+                cout << "It is unfortunate that you have lost!" << endl;
                 return;
             StatusUpdate(inv);
         }
